@@ -17,6 +17,14 @@ CREATE TABLE IF NOT EXISTS images (
                 REFERENCES pets (pet_id)    
 );
 
+CREATE TABLE IF NOT EXISTS volunteers (
+        volunteer_id serial PRIMARY KEY,
+        first_name VARCHAR (32) NOT NULL,
+        last_name VARCHAR (32) NOT NULL,
+        email_address VARCHAR (32) NOT NULL,
+        approval_status INT NOT NULL
+);
+
 COMMIT;
 
 BEGIN TRANSACTION;
