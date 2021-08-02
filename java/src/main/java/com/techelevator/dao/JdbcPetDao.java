@@ -20,7 +20,7 @@ public class JdbcPetDao implements PetDao{
     @Override
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
-        String sql = "SELECT * from _pet_;";
+        String sql = "SELECT * from pet;";
         SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
             allPets.add(mapRowToPet(result));
