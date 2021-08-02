@@ -13,6 +13,7 @@ public class JdbcPetDao implements PetDao{
 
         private JdbcTemplate jdbcTemplate;
 
+
         public JdbcPetDao(JdbcTemplate jdbcTemplate) {
             this.jdbcTemplate = jdbcTemplate;
         }
@@ -20,7 +21,7 @@ public class JdbcPetDao implements PetDao{
     @Override
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
-        String sql = "SELECT pet_id, pet_name, age_in_months, gender, species, description FROM pet;";
+        String sql = "SELECT pet_id, pet_name, age_in_months, gender, species, description FROM pets;";
         SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
             allPets.add(mapRowToPet(result));
