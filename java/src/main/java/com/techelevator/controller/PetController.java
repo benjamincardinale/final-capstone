@@ -18,6 +18,7 @@ public class PetController {
         this.jdbcPetDao = jdbcPetDao;
     }
 
+
     @RequestMapping(path="/", method = RequestMethod.GET)
     public List<Pet> getAllPets(){
         return this.jdbcPetDao.getAllPets();
