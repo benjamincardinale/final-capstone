@@ -1,5 +1,5 @@
 <template>
- <div class="header">
+ <div class="the-header">
      <header>
          
      <h1>Second Chances</h1>
@@ -10,6 +10,7 @@
 
 <script>
 export default {
+    name: "the-header"
 
 }
 </script>

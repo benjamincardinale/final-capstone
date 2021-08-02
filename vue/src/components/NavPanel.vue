@@ -1,13 +1,21 @@
 <template>
   <div class="nav-panel">
-      <!-- pets-->
-      <!-- volunteer-->
+      <ul class="nav-links">
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/register">Volunteer Registration</router-link></li>
+      
+      </ul>
+      <!-- volunteer link-->
       <!-- add pets-->
   </div>
 </template>
 
 <script>
+
+
 export default {
+    name: "nav-panel"
+
 
 }
 </script>
