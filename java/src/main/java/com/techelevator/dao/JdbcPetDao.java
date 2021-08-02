@@ -21,7 +21,8 @@ public class JdbcPetDao implements PetDao{
     @Override
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
-        String sql = "SELECT pet_id, pet_name, age_in_months, gender, species, description FROM pets;";
+        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, i.url " +
+                "FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id;";
         SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
             allPets.add(mapRowToPet(result));
@@ -37,6 +38,7 @@ public class JdbcPetDao implements PetDao{
             newPet.setSpecies(row.getString("species"));
             newPet.setDescription(row.getString("description"));
             newPet.setAge(row.getInt("age_in_months"));
+            newPet.setImageUrl(row.getString("url"));
             return newPet;
     }
 }
