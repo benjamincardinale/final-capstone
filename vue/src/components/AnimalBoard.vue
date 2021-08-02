@@ -1,61 +1,75 @@
 <template>
   <div class="cards">
-    <div class="petCard" v-for="pet in animalCards" v-bind:key="pet.id">
-      <h2>{{pet.pet_name}}</h2>
+    <div class="petCard" v-for="item in this.$store.state.animalCards" v-bind:key="item.id">
+      <h2>{{item.name}}</h2>
       <!-- <img src="placeholder.url" alt="description of animal" /> -->
-      <div class="description">
-        <p class="top-line">Gender: {{pet.gender}}</p>
-        <p class="top-line">Age: {{pet.age_in_months}}</p>
-        <p class="mid-line">{{pet.species}}</p>
-        <p class="summary">{{pet.description}}</p>
+      <div class="info-line">
+        <p class="top-line">Gender: {{item.gender}}</p>
+        <p class="top-line">Age: {{item.age}}</p>
+        <p class="mid-line">Type: {{item.species}}</p>
+      </div>
+      <div class="summary">  
+        <h4 class="summary-title">About {{item.name}}:</h4>
+        <p class="summary-content">{{item.description}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import animalService from "@/services/AnimalServices.js";
+import animalService from "@/services/AnimalService.js";
 
 export default {
   data() {
     return {
-      animalCards: [],
+    
     };
   },
   created() {
-    animalService.getAnimals().then((response) => {
-      this.animalCards = response.data;
-    });
-  },
+    this.retrieveAnimals();
+    },
+  
+  methods: {
+    retrieveAnimals() {
+      animalService.getAnimals().then(response => {
+        this.$store.commit("SET_CARDS", response.data);
+      })
+    }
+  }
 };
 </script>
 
 <style scoped>
+
 .cards {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 10px;
 }
 .petCard {
-    background-color: darkolivegreen;
-    border-radius: 10px;
-    flex: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid tan;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.top-line {
+h2 {
+  text-align: center;
+  
+}
+.info-line {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-.mid-line {
-  justify-content: center;
-  align-items: center;
-  flex-grow: 2; /*not sure if this will space as intended yet */
-}
+} 
 .summary {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
+
 </style>

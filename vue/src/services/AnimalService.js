@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+const http = axios.create({
+    baseURL: "http://localhost:8080"
+})
+
 export default {
     getAnimals() {
-        return axios.get('/')
+        return http.get('/')
     },
 
 }
