@@ -4,7 +4,6 @@ public class Pet {
 
     private long id;
     private String name;
-    private boolean neutered; //probably not have this
     private String gender;
     private String species;
     private String description;
@@ -12,10 +11,9 @@ public class Pet {
 
     public Pet() {}
 
-    public Pet(long id, String name, boolean neutered, String gender, String species, String description, int age) {
+    public Pet(long id, String name, String gender, String species, String description, int age) {
         this.id = id;
         this.name = name;
-        this.neutered = neutered;
         this.gender = gender;
         this.species = species;
         this.description = description;
@@ -36,14 +34,6 @@ public class Pet {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isNeutered() {
-        return neutered;
-    }
-
-    public void setNeutered(boolean neutered) {
-        this.neutered = neutered;
     }
 
     public String getGender() {
@@ -83,7 +73,6 @@ public class Pet {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", neutered=" + neutered +
                 ", gender='" + gender + '\'' +
                 ", species='" + species + '\'' +
                 ", description='" + description + '\'' +
