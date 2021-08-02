@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS pets (
 CREATE TABLE IF NOT EXISTS images (
         image_id serial PRIMARY KEY,
         pet_id INT NOT NULL,
-        url VARCHAR (64), 
+        url VARCHAR (64),
+        image_description VARCHAR (64), 
         FOREIGN KEY (pet_id)
                 REFERENCES pets (pet_id)    
 );
