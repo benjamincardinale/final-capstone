@@ -43,3 +43,19 @@ INSERT INTO pets (pet_name, age_in_months, gender, species, description)
 VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
 
 COMMIT;
+
+BEGIN TRANSACTION;
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (3, 'src\images\BUSTER_01.JPG', 'Cute white fluffy bunny.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (1, 'src\images\COOKIE_01.JPG', 'Golden brown short haired dog licking nose.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (2, 'src\images\VINCENT_01.JPG', 'Young gray and black kitten.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (4, 'src\images\WAFFLES_01.JPG', 'Young chocolate lab.');
+
+COMMIT;
