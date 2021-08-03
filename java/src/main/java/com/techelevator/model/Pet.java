@@ -8,16 +8,20 @@ public class Pet {
     private String species;
     private String description;
     private int age;
+    private String imageUrl;
+    private String imageDescription;
 
     public Pet() {}
 
-    public Pet(long id, String name, String gender, String species, String description, int age) {
+    public Pet(long id, String name, String gender, String species, String description, int age, String url, String imageDescription) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.species = species;
         this.description = description;
         this.age = age;
+        this.imageUrl = url;
+        this.imageDescription = imageDescription;
     }
 
     public long getId() {
@@ -66,6 +70,22 @@ public class Pet {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageDescription() {
+        return imageDescription;
+    }
+
+    public void setImageDescription(String imageDescription) {
+        this.imageDescription = imageDescription;
     }
 
     @Override

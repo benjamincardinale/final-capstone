@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS images CASCADE;
+DROP TABLE IF EXISTS pets CASCADE;
+DROP TABLE IF EXISTS volunteers CASCADE;
+
 BEGIN TRANSACTION;
 
 CREATE TABLE IF NOT EXISTS pets (
@@ -12,9 +16,18 @@ CREATE TABLE IF NOT EXISTS pets (
 CREATE TABLE IF NOT EXISTS images (
         image_id serial PRIMARY KEY,
         pet_id INT NOT NULL,
-        url VARCHAR (64), 
+        url VARCHAR (64),
+        image_description VARCHAR (64), 
         FOREIGN KEY (pet_id)
                 REFERENCES pets (pet_id)    
+);
+
+CREATE TABLE IF NOT EXISTS volunteers (
+        volunteer_id serial PRIMARY KEY,
+        first_name VARCHAR (32) NOT NULL,
+        last_name VARCHAR (32) NOT NULL,
+        email_address VARCHAR (32) NOT NULL,
+        approval_status INT NOT NULL
 );
 
 COMMIT;
@@ -32,5 +45,21 @@ VALUES ('Buster', 11, 'M', 'rabbit', 'Buster is an inquisitive young fella who n
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
 VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
+
+COMMIT;
+
+BEGIN TRANSACTION;
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (3, 'src\images\BUSTER_01.jpg', 'Cute white fluffy bunny.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (1, 'src\images\COOKIE_01.jpg', 'Golden brown short haired dog licking nose.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (2, 'src\images\VINCENT_01.jpg', 'Young gray and black kitten.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (4, 'src\images\WAFFLES_01.jpg', 'Young chocolate lab.');
 
 COMMIT;
