@@ -48,14 +48,15 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: 30px;
+  margin: 35px;
 }
 .petCard {
     display: flex;
-    background-color: rgb(223, 230, 165);
+    background-color: rgb(172, 226, 170);
+    opacity: 0.9;
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid rgb(212, 165, 102);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 15px;
     padding: 15px;
     text-align: center;
