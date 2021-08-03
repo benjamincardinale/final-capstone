@@ -65,11 +65,13 @@ export default {
     font-size: 2em;
 }
 h2 {
+  margin-top: 2%;
   text-align: center;
   
 }
 .info-line {
   display: flex;
+  margin-top: 2.5%;
   justify-content: space-around;
 } 
 .summary {
