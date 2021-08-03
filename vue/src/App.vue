@@ -30,8 +30,9 @@ export default {
 };
 </script>
 
-<style> /*
- #app {
-   background: url("/assets/background_image.jpg");
- } */
+<style> 
+ body {
+   background-image: url("assets/background_image.jpg");
+   background-attachment: fixed;
+ } 
 </style>
