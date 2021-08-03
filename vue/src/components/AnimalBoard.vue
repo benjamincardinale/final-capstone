@@ -48,7 +48,8 @@ export default {
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: 35px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .petCard {
     display: flex;
