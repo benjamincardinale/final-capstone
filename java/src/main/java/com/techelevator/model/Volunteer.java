@@ -1,9 +1,14 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotNull;
+
 public class Volunteer {
     private long id;
+    @NotNull(message = "Must have a first name.")
     private String firstName;
+    @NotNull(message = "Must have a last name.")
     private String lastName;
+    @NotNull(message = "Must have an email address.")
     private String emailAddress;
     private int status;
 
