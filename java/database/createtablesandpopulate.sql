@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS images CASCADE;
 DROP TABLE IF EXISTS pets CASCADE;
 DROP TABLE IF EXISTS volunteers CASCADE;
+DROP TABLE IF EXISTS approval_statuses CASCADE;
 
 BEGIN TRANSACTION;
 
@@ -74,15 +75,15 @@ COMMIT;
 BEGIN TRANSACTION;
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (3, "require('src\images\BUSTER_01.jpg')", 'Cute white fluffy bunny.');
+VALUES (3, '"require(''src\images\BUSTER_01.jpg'')"', 'Cute white fluffy bunny.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (1, "require('src\images\COOKIE_01.jpg')", 'Golden brown short haired dog licking nose.');
+VALUES (1, '"require(''src\images\COOKIE_01.jpg'')"', 'Golden brown short haired dog licking nose.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (2, "require('src\images\VINCENT_01.jpg')", 'Young gray and black kitten.');
+VALUES (2, '"require(''src\images\VINCENT_01.jpg'')"', 'Young gray and black kitten.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (4, "require('src\images\WAFFLES_01.jpg')", 'Young chocolate lab.');
+VALUES (4, '"require(''src\images\WAFFLES_01.jpg'')"', 'Young chocolate lab.');
 
 COMMIT;
