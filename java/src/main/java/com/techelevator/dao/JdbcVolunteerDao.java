@@ -27,7 +27,10 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public Volunteer insertVolunteer(Volunteer volunteer) {
         String sql = "INSERT INTO volunteers (first_name, last_name, email_address, approval_status) " +
-                "VALUES (?, ?, ?, 0) RETURNING volunteer_id;";
+                "VALUES (?, ?, ?, " +
+                "(SELECT approval_status_id FROM approval_statuses WHERE approval_status_description = 'Pending')" +
+                ") " +
+                "RETURNING volunteer_id;";
         long new_id = jdbcTemplate.queryForObject(sql, Long.class, volunteer.getFirstName(), volunteer.getLastName(),
                 volunteer.getEmailAddress());
         return getVolunteerFromId(new_id);
