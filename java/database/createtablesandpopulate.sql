@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS images CASCADE;
 DROP TABLE IF EXISTS pets CASCADE;
 DROP TABLE IF EXISTS volunteers CASCADE;
+DROP TABLE IF EXISTS approval_statuses CASCADE;
 
 BEGIN TRANSACTION;
 
@@ -22,15 +23,37 @@ CREATE TABLE IF NOT EXISTS images (
                 REFERENCES pets (pet_id)    
 );
 
+CREATE TABLE IF NOT EXISTS approval_statuses (
+        approval_status_id INT PRIMARY KEY,
+        approval_status_description VARCHAR (8)
+);
+
 CREATE TABLE IF NOT EXISTS volunteers (
         volunteer_id serial PRIMARY KEY,
         first_name VARCHAR (32) NOT NULL,
         last_name VARCHAR (32) NOT NULL,
         email_address VARCHAR (32) NOT NULL,
-        approval_status INT NOT NULL
+        approval_status_id INT NOT NULL,
+        FOREIGN KEY (approval_status_id)
+                REFERENCES approval_statuses (approval_status_id)
 );
 
 COMMIT;
+
+
+BEGIN TRANSACTION;
+
+INSERT INTO approval_statuses (approval_status_id, approval_status_description)
+VALUES (0, 'Pending');
+
+INSERT INTO approval_statuses (approval_status_id, approval_status_description)
+VALUES (1, 'Approved');
+
+INSERT INTO approval_statuses (approval_status_id, approval_status_description)
+VALUES (2, 'Declined');
+
+COMMIT;
+
 
 BEGIN TRANSACTION;
 
@@ -48,18 +71,19 @@ VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scr
 
 COMMIT;
 
+
 BEGIN TRANSACTION;
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (3, 'src\images\BUSTER_01.jpg', 'Cute white fluffy bunny.');
+VALUES (3, 'BUSTER_01.jpg', 'Cute white fluffy bunny.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (1, 'src\images\COOKIE_01.jpg', 'Golden brown short haired dog licking nose.');
+VALUES (1, 'COOKIE_01.jpg', 'Golden brown short haired dog licking nose.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (2, 'src\images\VINCENT_01.jpg', 'Young gray and black kitten.');
+VALUES (2, 'VINCENT_01.jpg', 'Young gray and black kitten.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (4, 'src\images\WAFFLES_01.jpg', 'Young chocolate lab.');
+VALUES (4, 'WAFFLES_01.jpg', 'Young chocolate lab.');
 
 COMMIT;
