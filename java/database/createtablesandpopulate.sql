@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS volunteers (
         first_name VARCHAR (32) NOT NULL,
         last_name VARCHAR (32) NOT NULL,
         email_address VARCHAR (32) NOT NULL,
+        has_adopted_before BOOLEAN NOT NULL,
+        has_any_certifications BOOLEAN NOT NULL,
         approval_status_id INT NOT NULL,
         FOREIGN KEY (approval_status_id)
                 REFERENCES approval_statuses (approval_status_id)
