@@ -10,18 +10,24 @@ public class Volunteer {
     private String lastName;
     @NotNull(message = "Must have an email address.")
     private String emailAddress;
+    @NotNull(message = "Must be either true or false")
+    private boolean adoptedBefore;
+    @NotNull(message = "Must be either true or false")
+    private boolean hasCertifications;
     private int status;
 
     public Volunteer() {
 
     }
 
-    public Volunteer(long id, String firstName, String lastName, String emailAddress, int status) {
+    public Volunteer(long id, String firstName, String lastName, String emailAddress, int status, boolean adoptedBefore, boolean hasCertifications) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.status = status;
+        this.adoptedBefore = adoptedBefore;
+        this.hasCertifications = hasCertifications;
     }
 
     public long getId() {
@@ -62,5 +68,21 @@ public class Volunteer {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public boolean isAdoptedBefore() {
+        return adoptedBefore;
+    }
+
+    public void setAdoptedBefore(boolean adoptedBefore) {
+        this.adoptedBefore = adoptedBefore;
+    }
+
+    public boolean isHasCertifications() {
+        return hasCertifications;
+    }
+
+    public void setHasCertifications(boolean hasCertifications) {
+        this.hasCertifications = hasCertifications;
     }
 }

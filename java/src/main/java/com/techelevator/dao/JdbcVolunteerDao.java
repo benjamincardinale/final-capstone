@@ -43,6 +43,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
         newVolunteer.setLastName(row.getString("last_name"));
         newVolunteer.setEmailAddress(row.getString("email_address"));
         newVolunteer.setStatus(row.getInt("approval_status_id"));
+        newVolunteer.setAdoptedBefore(row.getBoolean(""));
         return newVolunteer;
     }
 }
