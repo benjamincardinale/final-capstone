@@ -10,7 +10,6 @@ public class Volunteer {
     private String lastName;
     @NotNull(message = "Must have an email address.")
     private String emailAddress;
-    @NotNull(message = "Approval status cannot be null.")
     private int status;
 
     public Volunteer() {
