@@ -6,7 +6,7 @@
            :alt="item.imageDescription" />
       <div class="info-line">
         <p class="top-line">Gender: {{item.gender}}</p>
-        <p class="top-line">Age: {{item.age}}</p>
+        <p class="top-line">Age: {{item.age}} Months</p>
         <p class="mid-line">Type: {{item.species}}</p>
       </div>
       <div class="summary">  

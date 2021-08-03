@@ -20,6 +20,22 @@
           /><br>
           <label for="email">Email address:</label>
           <input type="text" id="email" name="email" v-model="application.emailAddress" /><br>
+          <div class="yes-no-cert">
+            <label for="cert-box">Do you have any pet care certifications? </label>
+            <input type="radio" id="cert-box-yes" name="cert-box" value = true v-model="application.hasCertifications">
+            <label for="cert-box-yes">Yes</label>
+            <input type="radio" id="cert-box-no" name="cert-box" value = false v-model="application.hasCertifications">
+            <label for="cert-box-no">No</label>
+          </div>
+          <br>
+          <div>
+            <label for="adopted-before">Have you adopted a pet from a shelter before?</label>
+            <input type="radio" id="adopted-before-yes" name="adopted-before" value= true v-model="application.adoptedBefore">
+            <label for ="adopted-before-yes">Yes</label>
+            <input type="radio" id="adopted-before-no" name="adopted-before" value= false v-model="application.adoptedBefore">
+            <label for="adopted-before-no">No</label>
+          </div>
+          <br>
         </div>  
         <div class="buttons">
           <button class="btn btn-submit">Submit</button>
@@ -40,7 +56,9 @@ export default {
             application: {
                 firstName: "",
                 lastName: "",
-                emailAddress: ""
+                emailAddress: "",
+                adoptedBefore: "",
+                hasCertifications: ""
             }
         };
     },
@@ -49,7 +67,9 @@ export default {
         const newApp = {
             firstName: this.application.firstName,
             lastName: this.application.lastName,
-            emailAddress: this.application.emailAddress
+            emailAddress: this.application.emailAddress,
+            adoptedBefore: this.application.adoptedBefore,
+            hasCertifications: this.application.hasCertifications
             };
             //add the service call here
             volunteerService.apply(newApp)
@@ -104,7 +124,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 1.5em;
+  font-size: 1.25em;
   
   
 }
