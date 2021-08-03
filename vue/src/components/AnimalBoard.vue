@@ -2,7 +2,7 @@
   <div class="cards">
     <div class="petCard" v-for="item in this.$store.state.animalCards" v-bind:key="item.id">
       <h2>{{item.name}}</h2>
-      <img :src="item.imageUrl"
+      <img :src="require('../assets/' + item.imageUrl)"
            :alt="item.imageDescription" />
       <div class="info-line">
         <p class="top-line">Gender: {{item.gender}}</p>
@@ -29,9 +29,7 @@ export default {
   created() {
     this.retrieveAnimals();
     },
-  computed: {
-    
-  },    
+  computed: {},    
   
   methods: {
     retrieveAnimals() {
@@ -48,19 +46,21 @@ export default {
 .cards {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
-  margin: 10px;
+  margin: 30px;
 }
 .petCard {
     display: flex;
+    background-color: rgb(223, 230, 165);
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid tan;
+    border: 2px solid rgb(212, 165, 102);
     border-radius: 15px;
     padding: 15px;
-    text-align: left;
+    text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
 }
 h2 {
   text-align: center;
@@ -75,10 +75,16 @@ h2 {
   flex-direction: column;
   padding: 20px;
 }
-/*
+
 img {
+  align-self: center;
+  max-width: 50%;
+  height: auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 30px;
 
 }
-*/
+
 
 </style>
