@@ -29,3 +29,9 @@ export default {
   },
 };
 </script>
+
+<style> /*
+ #app {
+   background: url("/assets/background_image.jpg");
+ } */
+</style>
