@@ -2,7 +2,7 @@
   <div class="cards">
     <div class="petCard" v-for="item in this.$store.state.animalCards" v-bind:key="item.id">
       <h2>{{item.name}}</h2>
-      <!-- <img src="placeholder.url" alt="description of animal" /> -->
+      <img v-bind:src="item.imageURL" v-bind:alt="item.image_description" />
       <div class="info-line">
         <p class="top-line">Gender: {{item.gender}}</p>
         <p class="top-line">Age: {{item.age}}</p>
@@ -22,12 +22,25 @@ import animalService from "@/services/AnimalService.js";
 export default {
   data() {
     return {
+      currentAnimalId: {
+        id: ""
+      }
     
     };
   },
   created() {
     this.retrieveAnimals();
     },
+  computed: {
+    imageSelector(animalID) {
+      const targetAnimal = this.$store.state.animalCards.filter((item) => {
+          item.id = animalID;
+      });
+      return targetAnimal.imgUrl;
+    }
+
+
+  },    
   
   methods: {
     retrieveAnimals() {
@@ -71,5 +84,10 @@ h2 {
   flex-direction: column;
   padding: 20px;
 }
+/*
+img {
+
+}
+*/
 
 </style>

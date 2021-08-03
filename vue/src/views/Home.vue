@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
     <animal-board/>
   </div>
 </template>
@@ -13,3 +12,10 @@ export default {
   name: "home"
 };
 </script>
+
+<style scoped>
+div h1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+</style>
