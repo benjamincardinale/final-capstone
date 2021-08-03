@@ -75,15 +75,15 @@ COMMIT;
 BEGIN TRANSACTION;
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (3, 'require(''../assets/BUSTER_01.jpg'')', 'Cute white fluffy bunny.');
+VALUES (3, '../assets/BUSTER_01.jpg', 'Cute white fluffy bunny.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (1, 'require(''../assets/COOKIE_01.jpg'')', 'Golden brown short haired dog licking nose.');
+VALUES (1, '../assets/COOKIE_01.jpg', 'Golden brown short haired dog licking nose.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (2, 'require(''../assets/VINCENT_01.jpg'')', 'Young gray and black kitten.');
+VALUES (2, '../assets/VINCENT_01.jpg', 'Young gray and black kitten.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (4, 'require(''../assets/WAFFLES_01.jpg'')', 'Young chocolate lab.');
+VALUES (4, '../assets/WAFFLES_01.jpg', 'Young chocolate lab.');
 
 COMMIT;
