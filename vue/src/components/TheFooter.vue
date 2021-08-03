@@ -14,5 +14,17 @@ export default {
 </script>
 
 <style>
+.the-footer{
+
+  text-align: center;
+  margin-top: 150px;
+  font-weight: 800;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+p{
+  margin: 0;
+  
+}
 
 </style>
