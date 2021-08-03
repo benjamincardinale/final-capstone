@@ -15,7 +15,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public Volunteer getVolunteerFromId(long id) {
-        String sql = "SELECT volunteer_id, first_name, last_name, email_address, approval_status_id " +
+        String sql = "SELECT volunteer_id, first_name, last_name, email_address, has_adopted_before, has_any_certifications, approval_status_id " +
                 "FROM volunteers WHERE volunteer_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if (result.next()) {
@@ -26,13 +26,13 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public Volunteer insertVolunteer(Volunteer volunteer) {
-        String sql = "INSERT INTO volunteers (first_name, last_name, email_address, approval_status_id) " +
-                "VALUES (?, ?, ?, " +
+        String sql = "INSERT INTO volunteers (first_name, last_name, email_address, has_adopted_before, has_any_certifications, approval_status_id) " +
+                "VALUES (?, ?, ?, ?, ?, " +
                 "(SELECT approval_status_id FROM approval_statuses WHERE approval_status_description = 'Pending')" +
                 ") " +
                 "RETURNING volunteer_id;";
         long new_id = jdbcTemplate.queryForObject(sql, Long.class, volunteer.getFirstName(), volunteer.getLastName(),
-                volunteer.getEmailAddress());
+                volunteer.getEmailAddress(), volunteer.isAdoptedBefore(), volunteer.isHasCertifications());
         return getVolunteerFromId(new_id);
     }
 
@@ -43,6 +43,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
         newVolunteer.setLastName(row.getString("last_name"));
         newVolunteer.setEmailAddress(row.getString("email_address"));
         newVolunteer.setStatus(row.getInt("approval_status_id"));
+        newVolunteer.setAdoptedBefore(row.getBoolean("has_adopted_before"));
+        newVolunteer.setHasCertifications(row.getBoolean("has_any_certifications"));
         return newVolunteer;
     }
 }
