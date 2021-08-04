@@ -24,10 +24,11 @@ export default {
 
 <style>
 .nav-links{
-   background-color: rgba(177, 177, 177, 0.5);
   border-radius: 35px;
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 100px;
+  font-size: 2em;
  }
 
  
