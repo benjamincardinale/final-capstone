@@ -20,7 +20,7 @@
           /><br>
           <label for="email">Email address:</label>
           <input type="text" id="email" name="email" v-model="application.emailAddress" /><br>
-          <div class="yes-no-cert">
+          <div class="yes-no-cert , radio-btns">
             <label for="cert-box">Do you have any pet care certifications? </label>
             <input type="radio" id="cert-box-yes" name="cert-box" value = true v-model="application.hasCertifications">
             <label for="cert-box-yes">Yes</label>
@@ -28,7 +28,7 @@
             <label for="cert-box-no">No</label>
           </div>
           <br>
-          <div>
+          <div class= "radio-btns">
             <label for="adopted-before">Have you adopted a pet from a shelter before?</label>
             <input type="radio" id="adopted-before-yes" name="adopted-before" value= true v-model="application.adoptedBefore">
             <label for ="adopted-before-yes">Yes</label>
@@ -95,13 +95,26 @@ export default {
 .app-card {
   display: flex;
   flex-direction: column;
+
 }
 
 .title {
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
   padding: 40px;
+}
+#fname {
+  font-size: 16pt;
+  height: 40px;
+}
+#lname {
+  font-size: 14pt;
+  height: 40px;
+}
+#email {
+  font-size: 14pt;
+  height: 40px;
 }
 
 
@@ -114,19 +127,22 @@ export default {
   border: 2px solid black;
   padding: 35px;
   border-radius: 45px;
-  margin-right: 25%;
-  margin-left: 25%;
-  margin-top: 5%;
+  margin-right: 20%;
+  margin-left: 23%;
+  margin-top: 10%;
   margin-bottom: 10%;
 }
 .text-boxes {
   display: flex;
   flex-direction: column;
+  text-align: left;
   justify-content: space-between;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 1.25em;
-  
-  
+  font-size: 2em;  
+}
+.radio-btns {
+  text-align: center;
+  font-size: 1em;
 }
 .buttons {
   display: flex;
