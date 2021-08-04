@@ -11,4 +11,6 @@ public interface PetDao {
     Pet getPetFromId(Long id);
 
     Pet addPet(Pet pet);
+
+    void updatePet(Pet pet);
 }

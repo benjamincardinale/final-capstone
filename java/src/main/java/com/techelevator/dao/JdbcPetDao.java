@@ -54,6 +54,17 @@ public class JdbcPetDao implements PetDao{
         return getPetFromId(newPetId);
     }
 
+    @Override
+    public void updatePet(Pet pet) {
+        String sql = "UPDATE pets SET (pet_name, age_in_months, gender, species, description) " +
+                "= (?,?,?,?,?) " +
+                "WHERE pet_id = ?;";
+        jdbcTemplate.update(sql, pet.getName(), pet.getAge(), pet.getGender(), pet.getSpecies(),
+                pet.getDescription(), pet.getId());
+        sql = "UPDATE images SET (url, image_description) = (?,?) WHERE pet_id = ?"; //This one could be problematic, this is fine if there is only one image per pet, but when there are multiple, I will have to redo this query to be more selective about which image it's updating.
+        jdbcTemplate.update(sql, pet.getImageUrl(), pet.getDescription(), pet.getId());
+    }
+
     private Pet mapRowToPet(SqlRowSet row) {
             Pet newPet = new Pet();
             newPet.setId(row.getLong("pet_id"));
