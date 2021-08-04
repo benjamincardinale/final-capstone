@@ -24,7 +24,7 @@ public class PetController {
         return this.jdbcPetDao.getAllPets();
     }
 
-    @RequestMapping(path = "/add/pet", method = RequestMethod.POST)
+    @RequestMapping(path = "/pet/add", method = RequestMethod.POST)
     public Pet addPet(@Valid @RequestBody Pet pet) {
         return jdbcPetDao.addPet(pet);
     }
