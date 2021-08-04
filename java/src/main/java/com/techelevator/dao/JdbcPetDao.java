@@ -19,6 +19,18 @@ public class JdbcPetDao implements PetDao{
         }
 
     @Override
+    public Pet getPetFromId(Long id) {
+        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, i.url, " +
+                "i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id " +
+                "WHERE p.pet_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        if (result.next()) {
+            return mapRowToPet(result);
+        }
+        return null;
+    }
+
+    @Override
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
         String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, i.url, " +
@@ -28,6 +40,18 @@ public class JdbcPetDao implements PetDao{
             allPets.add(mapRowToPet(result));
         }
         return allPets;
+    }
+
+    @Override
+    public Pet addPet(Pet pet) {
+        String sql = "INSERT INTO pets (pet_name, age_in_months, gender, species, description) " +
+                "VALUES (?, ?, ?, ?, ?) RETURNING pet_id;";
+        long newPetId = jdbcTemplate.queryForObject(sql, Long.class, pet.getName(), pet.getAge(), pet.getGender(),
+                pet.getSpecies(), pet.getDescription());
+        sql = "INSERT INTO images (pet_id, url, image_description) " +
+                "VALUES (?, ?, ?);";
+        jdbcTemplate.update(sql, newPetId, pet.getImageUrl(), pet.getImageDescription());
+        return getPetFromId(newPetId);
     }
 
     private Pet mapRowToPet(SqlRowSet row) {
