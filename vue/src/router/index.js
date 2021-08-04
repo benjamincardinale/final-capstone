@@ -60,6 +60,14 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/submit",
+      name: "submit",
+      component: PetSubmission,
+      meta: {
+        requiresAuth: true
+      }
     },  
   ]
 })
