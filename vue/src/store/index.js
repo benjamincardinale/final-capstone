@@ -20,7 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    animalCards: []
+    animalCards: [],
+    isAuth: false,
+    updatePetId: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

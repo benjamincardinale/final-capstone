@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <div class="petCard" v-for="item in this.$store.state.animalCards" v-bind:key="item.id">
+    <div class="petCard" v-for="item in $store.state.animalCards" v-bind:key="item.id">
       <h2>{{item.name}}</h2>
       <img :src="require('../assets/' + item.imageUrl)"
            :alt="item.imageDescription" />
@@ -12,7 +12,7 @@
       <div class="summary">  
         <h4 class="summary-title">About {{item.name}}:</h4>
         <p class="summary-content">{{item.description}}</p>
-      </div>
+      </div> 
     </div>
   </div>
 </template>
@@ -29,13 +29,23 @@ export default {
   created() {
     this.retrieveAnimals();
     },
-  computed: {},    
+  computed: {
+    
+  },    
   
   methods: {
     retrieveAnimals() {
       animalService.getAnimals().then(response => {
         this.$store.commit("SET_CARDS", response.data);
       })
+    },
+    findAnimalIdByName(name) {
+      const targetAnimal = this.$store.state.animalCards.find((item) => {
+        if(item.name == name) {
+          return true;
+        }
+        return targetAnimal.id
+      });
     }
   }
 };
@@ -53,11 +63,11 @@ export default {
 }
 .petCard {
     display: flex;
-    background-color: rgb(172, 226, 170);
+    background-color: rgba(241, 138, 41, 0.479);
     opacity: 0.9;
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgba(248, 203, 4, 0.753);
     border-radius: 15px;
     padding: 15px;
     text-align: center;

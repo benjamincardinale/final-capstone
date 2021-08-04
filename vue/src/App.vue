@@ -8,6 +8,7 @@
     </div>
     <the-header />
     <nav-panel />
+    <hidden-functions/>
     <router-view class="routerView" />
     <the-footer />
   </div>
@@ -17,12 +18,14 @@
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import NavPanel from "@/components/NavPanel.vue";
+import HiddenFunctions from './components/HiddenFunctions.vue';
 
 export default {
   components: {
     TheHeader,
     TheFooter,
     NavPanel,
+    HiddenFunctions,
   },
 };
 </script>
