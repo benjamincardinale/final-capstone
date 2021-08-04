@@ -1,12 +1,20 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class Pet {
 
     private long id;
+    @NotBlank(message = "Name must not be blank.")
     private String name;
+    @NotBlank(message="Gender must not be blank and can be only one character.")
     private String gender;
+    @NotBlank(message = "Species must not be blank.")
     private String species;
+    @NotBlank(message = "Description must not be blank.")
     private String description;
+    @Min(value=0, message = "Age in months must be some number that is at least 0.")
     private int age;
     private String imageUrl;
     private String imageDescription;
