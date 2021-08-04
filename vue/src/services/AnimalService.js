@@ -9,8 +9,8 @@ export default {
         return http.get('/')
     },
 
-    postAnimal() {
-        return http.post('/add/pet')
+    postAnimal(animal) {
+        return http.post('/add/pet', animal)
     }
 
 }

@@ -27,7 +27,7 @@ export default {
    background-color: rgba(177, 177, 177, 0.5);
   border-radius: 35px;
   text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
  }
 
  

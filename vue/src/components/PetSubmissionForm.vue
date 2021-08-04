@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import animalService from '../services/AnimalService.js'
 
 export default {
     name: "pet-submission-form",
@@ -58,6 +59,15 @@ export default {
                 description: this.newAnimal.description,
                 imageUrl: this.newAnimal.imageUrl
             }
+            animalService.postAnimal(animalToAdd)
+            .then(response => {
+                if (response.status === 200) {
+                    alert("Submission successful")
+                }
+            })
+            .catch(error => {
+                alert("Error: " + error.status)
+            })
 
         }
 

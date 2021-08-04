@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import VolunteerApplication from '../views/VolunteerApplication.vue'
+import PetSubmission from '../views/PetSubmission.vue'
 Vue.use(Router)
 
 /**
