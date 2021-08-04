@@ -23,7 +23,7 @@
               <button class="btn btn-submit">SUBMIT</button>
               <button class="btn btn-cancel" type="cancel" v-on:click.prevent="cancelForm">CANCEL</button>
           </div>
-          <!-- submit btn, reset btn, cancel btn, -->
+          
       </form>
   </div>
 </template>

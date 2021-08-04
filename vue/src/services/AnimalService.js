@@ -11,6 +11,10 @@ export default {
 
     postAnimal(animal) {
         return http.post('/add/pet', animal)
+    },
+    updateListing(animal, animalID) {
+        return http.put('/placeholder/' + animalID , animal)
     }
+    //insert update path in put('/placeholder/')
 
 }
