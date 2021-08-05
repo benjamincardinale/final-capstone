@@ -36,6 +36,21 @@ public class JdbcVolunteerDao implements VolunteerDao{
         return getVolunteerFromId(new_id);
     }
 
+    @Override
+    public void changeVolunteerApprovalStatus(long id, String statusStr) {
+        String sql = "SELECT approval_status_id FROM approval_statuses " +
+                "WHERE approval_status_description ILIKE ?;";
+        long statusId = jdbcTemplate.queryForObject(sql, Long.class, statusStr);
+        changeVolunteerApprovalStatus(id, statusId);
+    }
+
+    @Override
+    public void changeVolunteerApprovalStatus(long id, long statusId) {
+        String sql = "UPDATE volunteer SET (approval_status_id) = (?) " +
+                "WHERE volunteer_id = ?;";
+        jdbcTemplate.update(sql, statusId, id);
+    }
+
     private Volunteer mapRowToVolunteer(SqlRowSet row) {
         Volunteer newVolunteer = new Volunteer();
         newVolunteer.setId(row.getLong("volunteer_id"));
