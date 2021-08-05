@@ -1,7 +1,7 @@
 <template>
   <div class="hidden-btn">
       
-        <router-link v-bind:to="{name: ''}" v-if="$store.state.isAuth == true" class="update">Update Pet</router-link>
+        <router-link v-bind:to="{name: 'update'}" v-if="$store.state.isAuth == true" class="update">Update Pet</router-link>
         <!-- insert update path above -->
         <router-link v-bind:to="{name: 'submit'}" v-if="$store.state.isAuth == true" class="add">Add Pet</router-link>  
       

@@ -13,7 +13,7 @@
           <label for="age">Pet's age in months: </label>
           <input type="number" id="age" name="age" v-model="newAnimal.age">
           <label for="type-of-animal">What type of animal? </label>
-          <input type="text" id="type-of-animal" name="type-of-animal" v-model="newAnimal.type">
+          <input type="text" id="type-of-animal" name="type-of-animal" v-model="newAnimal.species">
           <label for="text" id="description" name="description" >Brief Description: </label>
           <input type="text" id="description" name="description" v-model="newAnimal.description">
           <label for="image-url">Image Url: </label>
@@ -39,7 +39,7 @@ export default {
                 name: "",
                 gender: "",
                 age: "",
-                type: "",
+                species: "",
                 description: "",
                 imageUrl: ""
 
