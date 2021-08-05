@@ -2,13 +2,14 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcUserDao;
 import com.techelevator.dao.JdbcVolunteerDao;
-import com.techelevator.model.User;
 import com.techelevator.model.Volunteer;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @CrossOrigin
@@ -22,15 +23,19 @@ public class UserController {
         this.jdbcUserDao = jdbcUserDao;
     }
 
-    private boolean validateUniqueUsername(Volunteer volunteer) {
-        return true;
+    private boolean isUniqueUsername(Volunteer volunteer) { //Doing this map is probably a load of nonsense
+        Stream<Volunteer> usernameStream = jdbcVolunteerDao.getAllPendingAndApprovedVolunteers().stream();
+        Set<String> usernameSet = usernameStream.map(Volunteer::getUsername).collect(Collectors.toSet());
+        usernameSet.add("user");
+        usernameSet.add("admin");
+        return !usernameSet.contains(volunteer.getUsername());
     }
 
     //@ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/apply", method = RequestMethod.POST)
     public Volunteer applyForVolunteer(@Valid @RequestBody Volunteer volunteer) {
-        if (validateUniqueUsername(volunteer)) {
+        if (isUniqueUsername(volunteer)) {
             return jdbcVolunteerDao.insertVolunteer(volunteer);
         }
         return null;
