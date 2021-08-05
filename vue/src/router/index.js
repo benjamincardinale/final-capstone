@@ -8,6 +8,7 @@ import store from '../store/index'
 import VolunteerApplication from '../views/VolunteerApplication.vue'
 import PetSubmission from '../views/PetSubmission.vue'
 import About from '../views/About.vue'
+import UpdatePetsView from '../views/UpdatePetsView.vue'
 Vue.use(Router)
 
 /**
@@ -78,7 +79,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }, 
+    },
+    {
+      path: "/update",
+      name: "update" ,
+      component: UpdatePetsView,
+      meta: {
+        requiresAuth: true
+      }
+    }  
   ]
 })
 
