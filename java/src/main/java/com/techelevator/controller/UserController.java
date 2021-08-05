@@ -35,6 +35,12 @@ public class UserController {
         Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
         String newUserName = volunteer.getFirstName() + "_" + volunteer.getLastName();
         jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 1L);
-        return jdbcUserDao.create(newUserName, "newuser", "ROLE_USER");
+        if (jdbcUserDao.create(newUserName, "newuser", "ROLE_USER")) {
+            return true;
+        }
+        else {
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 0L);
+            return false;
+        }
     }
 }
