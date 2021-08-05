@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import VolunteerApplication from '../views/VolunteerApplication.vue'
 import PetSubmission from '../views/PetSubmission.vue'
+import About from '../views/About.vue'
 Vue.use(Router)
 
 /**
@@ -69,7 +70,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },  
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
+      meta: {
+        requiresAuth: false
+      }
+    }, 
   ]
 })
 
