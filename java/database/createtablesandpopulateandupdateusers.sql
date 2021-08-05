@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS volunteers (
         volunteer_id serial PRIMARY KEY,
         first_name VARCHAR (32) NOT NULL,
         last_name VARCHAR (32) NOT NULL,
-		username VARCHAR (32) NOT NULL,
+	username VARCHAR (32) NOT NULL,
         email_address VARCHAR (32) NOT NULL,
         has_adopted_before BOOLEAN NOT NULL,
         has_any_certifications BOOLEAN NOT NULL,
@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS volunteers (
         FOREIGN KEY (approval_status_id)
                 REFERENCES approval_statuses (approval_status_id)
 );
+
+ALTER TABLE volunteers
+ADD CONSTRAINT unique_username UNIQUE (username);
 
 ALTER TABLE users
 ADD COLUMN is_new_user BOOLEAN;
@@ -99,3 +102,25 @@ INSERT INTO images (pet_id, url, image_description)
 VALUES (4, 'WAFFLES_01.jpg', 'Young chocolate lab.');
 
 COMMIT;
+
+CREATE USER final_capstone_owner
+WITH PASSWORD 'finalcapstone';
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+CREATE USER final_capstone_appuser
+WITH PASSWORD 'finalcapstone';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
