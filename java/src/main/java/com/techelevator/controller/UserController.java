@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.JdbcUserDao;
 import com.techelevator.dao.JdbcVolunteerDao;
 import com.techelevator.model.User;
 import com.techelevator.model.Volunteer;
@@ -14,9 +15,11 @@ import javax.validation.Valid;
 @PreAuthorize("isAuthenticated()")
 public class UserController {
     private JdbcVolunteerDao jdbcVolunteerDao;
+    private JdbcUserDao jdbcUserDao;
 
-    public UserController(JdbcVolunteerDao jdbcVolunteerDao) {
+    public UserController(JdbcVolunteerDao jdbcVolunteerDao, JdbcUserDao jdbcUserDao) {
         this.jdbcVolunteerDao = jdbcVolunteerDao;
+        this.jdbcUserDao = jdbcUserDao;
     }
 
     //@ResponseStatus(HttpStatus.CREATED)
@@ -28,7 +31,10 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')") //Unsure if it should be this or just 'ADMIN', so I will check a previous project later and make sure.
     @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
-    public User approveVolunteer(@PathVariable long volunteerId) { //TODO
-        return null;
+    public Boolean approveVolunteer(@PathVariable long volunteerId) {
+        Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+        String newUserName = volunteer.getFirstName() + "_" + volunteer.getLastName();
+        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 1L);
+        return jdbcUserDao.create(newUserName, "newuser", "ROLE_USER");
     }
 }
