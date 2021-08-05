@@ -22,20 +22,26 @@ public class UserController {
         this.jdbcUserDao = jdbcUserDao;
     }
 
+    private boolean validateUniqueUsername(Volunteer volunteer) {
+        return true;
+    }
+
     //@ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/apply", method = RequestMethod.POST)
     public Volunteer applyForVolunteer(@Valid @RequestBody Volunteer volunteer) {
-        return jdbcVolunteerDao.insertVolunteer(volunteer);
+        if (validateUniqueUsername(volunteer)) {
+            return jdbcVolunteerDao.insertVolunteer(volunteer);
+        }
+        return null;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')") //Unsure if it should be this or just 'ADMIN', so I will check a previous project later and make sure.
     @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
     public Boolean approveVolunteer(@PathVariable long volunteerId) {
         Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-        String newUserName = volunteer.getFirstName() + "_" + volunteer.getLastName();
         jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 1L);
-        if (jdbcUserDao.create(newUserName, "newuser", "ROLE_USER")) {
+        if (jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
             return true;
         }
         else {
