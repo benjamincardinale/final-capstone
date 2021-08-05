@@ -29,6 +29,7 @@ public class PetController {
         return jdbcPetDao.addPet(pet);
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/pet/update/{petId}", method = RequestMethod.PUT) //wew, come back to this one.
     public void updatePet(@Valid @RequestBody Pet pet, @PathVariable long petId) {
         pet.setId(petId);
