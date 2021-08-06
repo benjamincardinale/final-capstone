@@ -31,23 +31,21 @@ export default {
   font-size: 31px;
   background: rgb(233, 128, 116);
   padding: 10px;
-  margin: 10px;
-  height: 650px;
- 
-  
+  margin: 5px;
+
 }
 .nav-panel {
   display: flex;
   flex-direction: column;
   position: fixed;
-  width: 180px;
+  width: 12vw;
   top: 0;
   left: 0;
-  height: 100px;
-  
+  margin-bottom: -10px;
 }
-ul{
+ul li{
   list-style-type: none;
+  height: 10vh;
 }
 
 </style>

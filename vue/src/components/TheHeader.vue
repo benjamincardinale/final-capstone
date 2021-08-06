@@ -22,15 +22,16 @@ export default {
   border-radius: 25px;
   padding-top: 15px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin-bottom: 100px;
   text-align: center;
-  justify-content: space-around;
-  margin-top: 50px;
+  margin-top: -19px;
+  
+  
+  
 }
 
 .header-text h1 {
-  margin-top: -0.3em;
-  margin-bottom: -0.4em;
+  margin-top: -20px;
+  margin-bottom: -40px;
   text-decoration: underline;
   font-size: 100px;
 }
