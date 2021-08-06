@@ -101,6 +101,12 @@ VALUES (2, 'VINCENT_01.jpg', 'Young gray and black kitten.');
 INSERT INTO images (pet_id, url, image_description)
 VALUES (4, 'WAFFLES_01.jpg', 'Young chocolate lab.');
 
+INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
+VALUES ('henry','johnson','hencutJohnson','hencutJohnson@gmail.com',false,false,0),
+('other','test','othertestguy','othertestguy@gmail.com',true,false,0)
+;
+
+
 COMMIT;
 
 CREATE USER final_capstone_owner
