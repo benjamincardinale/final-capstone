@@ -63,7 +63,7 @@ export default {
 }
 .petCard {
     display: flex;
-    background-color: rgba(241, 138, 41, 0.479);
+    background:linear-gradient( rgba(255,203,154,.5), rgba(216, 195, 165,.5), rgba(255,203,154,.5));
     opacity: 0.9;
     flex-direction: column;
     justify-content: space-around;
