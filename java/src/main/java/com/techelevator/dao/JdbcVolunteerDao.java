@@ -21,7 +21,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public List<Volunteer> getAllPendingAndApprovedVolunteers() { //TODO this will also include volunteers with an approval status of DECLINED
         List<Volunteer> pendingAndApprovedVolunteers = new ArrayList<>();
-        String sql = VOLUNTEER_SELECT + ";";
+        String sql = VOLUNTEER_SELECT
+                + " WHERE a.approval_status_description = 'Pending' OR a.approval_status_description = 'Approved';";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             pendingAndApprovedVolunteers.add(mapRowToVolunteer(results));
@@ -73,7 +74,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public void changeVolunteerApprovalStatus(long id, long statusId) {
-        String sql = "UPDATE volunteer SET (approval_status_id) = (?) " +
+        String sql = "UPDATE volunteers SET approval_status_id = ? " +
                 "WHERE volunteer_id = ?;";
         jdbcTemplate.update(sql, statusId, id);
     }

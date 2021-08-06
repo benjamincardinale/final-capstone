@@ -47,17 +47,26 @@ public class UserController {
         return jdbcVolunteerDao.getAllPendingVolunteers();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')") //Unsure if it should be this or just 'ADMIN', so I will check a previous project later and make sure.
-    @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
-    public Boolean approveVolunteer(@PathVariable long volunteerId) {
-        Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
-        if (jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
-            return true;
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "/admin/approve", method = RequestMethod.PUT)
+    public void approveVolunteer(@RequestBody long[] volunteerIds) {
+        Volunteer volunteer;
+        for (long volunteerId : volunteerIds) {
+            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
+            if (!jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
+                jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Pending");
+            }
         }
-        else {
-            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 0L);
-            return false;
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "/admin/decline", method = RequestMethod.PUT)
+    public void declineVolunteer(@RequestBody long[] volunteerIds) { //TODO, should this be void?
+        Volunteer volunteer;
+        for (long volunteerId : volunteerIds) {
+            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Declined");
         }
     }
 }
