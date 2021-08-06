@@ -51,7 +51,7 @@ public class UserController {
     @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
     public Boolean approveVolunteer(@PathVariable long volunteerId) {
         Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 1L);
+        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
         if (jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
             return true;
         }
