@@ -2,7 +2,7 @@
   <div class="nav-panel">
     <div >
       <ul class="nav-links">
-      <li><router-link v-bind:to="{ name: 'home' }">Home</router-link></li>&nbsp;&nbsp;
+      <li><router-link v-bind:to="{ name: 'home' }" >Home</router-link></li>&nbsp;&nbsp;
       <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li>&nbsp;&nbsp;
       <li><router-link id="volunteer-registration" v-bind:to="{ name: 'apply' }"
         >Volun. Reg.</router-link
@@ -46,6 +46,10 @@ export default {
 ul li{
   list-style-type: none;
   height: 10vh;
+}
+.router-link-exact-active {
+  color: white;
+  font-weight: bold;
 }
 
 </style>

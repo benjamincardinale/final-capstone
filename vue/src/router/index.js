@@ -9,6 +9,7 @@ import VolunteerApplication from '../views/VolunteerApplication.vue'
 import PetSubmission from '../views/PetSubmission.vue'
 import About from '../views/About.vue'
 import UpdatePetsView from '../views/UpdatePetsView.vue'
+import VolunteerApprovalView from '../views/VolunteerApprovalView.vue'
 import ImageSubmission from '../views/ImageSubmission.vue'
 Vue.use(Router)
 
@@ -85,6 +86,14 @@ const router = new Router({
       path: "/update",
       name: "update" ,
       component: UpdatePetsView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/admin/pending",
+      name: "volunteer-pending",
+      component: VolunteerApprovalView,
       meta: {
         requiresAuth: true
       }

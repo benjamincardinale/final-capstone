@@ -23,6 +23,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     animalCards: [],
     role: currentRole || '',
+    pendingApplications: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -36,7 +37,8 @@ export default new Vuex.Store({
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
-      localStorage.removeItem('user');      
+      localStorage.removeItem('user'); 
+      localStorage.removeItem('role');     
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
@@ -47,6 +49,9 @@ export default new Vuex.Store({
     SET_ROLE(state, role) {
       state.role = role;
       localStorage.setItem('role', role)
+    },
+    SET_PENDING_APPLICATIONS(state, data) {
+      state.pendingApplications = data;
     }
     
   }

@@ -3,7 +3,7 @@
       
         <router-link v-bind:to="{name: 'update'}" v-if="$store.state.role != ''" class="update">Update Pet</router-link>
         
-        <router-link v-bind:to="{name: 'apply'}" v-if="$store.state.role == 'ROLE_ADMIN'" class="admin">ADMIN PAGE</router-link>
+        <router-link v-bind:to="{name: 'volunteer-pending'}" v-if="$store.state.role == 'ROLE_ADMIN'" class="admin">ADMIN PAGE</router-link>
             <!-- CHANGE TO ACTUAL PATH ONCE CREATED -->
         <router-link v-bind:to="{name: 'submit'}" v-if="$store.state.role != ''" class="add">Add Pet</router-link>  
 

@@ -38,14 +38,6 @@ export default {
       animalService.getAnimals().then(response => {
         this.$store.commit("SET_CARDS", response.data);
       })
-    },
-    findAnimalIdByName(name) {
-      const targetAnimal = this.$store.state.animalCards.find((item) => {
-        if(item.name == name) {
-          return true;
-        }
-        return targetAnimal.id
-      });
     }
   }
 };
