@@ -12,6 +12,10 @@ export default {
     },
     updateListing(animal, animalID) {
         return axios.put(`/pet/update/${animalID}` , animal)
+    },
+    createAdoption(adoptionObject) {
+        return axios.post('/pet/adoption', adoptionObject)
+        //path is temporary work with Henry to determine endpoint.
     }
     
 
