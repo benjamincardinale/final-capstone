@@ -60,4 +60,11 @@ public class UserController {
             return false;
         }
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(path = "/admin/decline/{volunteerId}", method = RequestMethod.PUT)
+    public void declineVolunteer(@PathVariable long volunteerId) { //TODO, should this be void?
+        Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Declined");
+    }
 }
