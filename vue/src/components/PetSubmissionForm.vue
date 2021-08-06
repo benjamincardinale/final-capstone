@@ -52,13 +52,21 @@ export default {
     methods: {
         cancelForm() {
             this.$router.push('/')
+            this.newAnimal = {
+                name: "",
+                gender: "",
+                age: "",
+                species: "",
+                description: "",
+                imageUrl: ""
+            }
         },
         submitForm() {
             const animalToAdd = {
                 name: this.newAnimal.name,
                 gender: this.newAnimal.gender,
                 age: this.newAnimal.age,
-                type: this.newAnimal.type,
+                species: this.newAnimal.species,
                 description: this.newAnimal.description,
                 imageUrl: this.newAnimal.imageUrl
             }
@@ -66,10 +74,18 @@ export default {
             .then(response => {
                 if (response.status === 200) {
                     alert("Submission successful")
+                    this.newAnimal = {
+                        name: "",
+                        gender: "",
+                        age: "",
+                        species: "",
+                        description: "",
+                        imageUrl: ""
+                    }
                 }
             })
             .catch(error => {
-                alert("Error: " + error.status)
+                alert("Error: try again : " + error.status)
             })
 
         }

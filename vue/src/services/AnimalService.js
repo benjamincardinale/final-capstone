@@ -8,11 +8,11 @@ export default {
     },
 
     postAnimal(animal) {
-        return axios.post('/add/pet', animal)
+        return axios.post('/pet/add', animal)
     },
     updateListing(animal, animalID) {
-        return axios.put('/placeholder/' + animalID , animal)
+        return axios.put(`/pet/update/${animalID}` , animal)
     }
-    //insert update path in put('/placeholder/')
+    
 
 }

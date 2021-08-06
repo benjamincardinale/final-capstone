@@ -102,6 +102,8 @@
 </template>
 
 <script>
+import animalService from '../services/AnimalService.js'
+
 export default {
   name: "update-pets",
   data() {
@@ -142,7 +144,28 @@ export default {
             description: "",
             imageUrl: "",
         }
-    }
+    },
+    submitForm() {
+      animalService.updateListing(this.targetAnimal, this.targetAnimal.id)
+      .then(response => {
+        if(response.status === 200) {
+            alert("Submission successful")
+            this.resetIdForm();
+            this.retrieveAnimals();
+        }
+      })
+      .catch(error => {
+        alert("Error: try again: " + error.status)
+        this.resetIdForm();
+        this.retrieveAnimals();
+      })
+    },
+    retrieveAnimals() {
+      animalService.getAnimals().then(response => {
+        this.$store.commit("SET_CARDS", response.data);
+      })
+    },
+
   },
 };
 </script>
