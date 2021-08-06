@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcPetDao;
 import com.techelevator.model.Pet;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class PetController {
         return this.jdbcPetDao.getAllPets();
     }
 
+    //@ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/pet/add", method = RequestMethod.POST)
     public Pet addPet(@Valid @RequestBody Pet pet) {
         return jdbcPetDao.addPet(pet);

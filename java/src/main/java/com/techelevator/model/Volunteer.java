@@ -1,18 +1,20 @@
 package com.techelevator.model;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class Volunteer {
     private long id;
-    @NotNull(message = "Must have a first name.")
+    @NotBlank(message = "Must have a first name.")
     private String firstName;
-    @NotNull(message = "Must have a last name.")
+    @NotBlank(message = "Must have a last name.")
     private String lastName;
-    @NotNull(message = "Must have an email address.")
+    @NotBlank(message = "Must have a username that is not blank.")
+    private String username;
+    @NotBlank(message = "Must have an email address.")
     private String emailAddress;
-    @NotNull(message = "Must be either true or false")
+    @NotBlank(message = "Must be either true or false")
     private boolean adoptedBefore;
-    @NotNull(message = "Must be either true or false")
+    @NotBlank(message = "Must be either true or false")
     private boolean hasCertifications;
     private int status;
 
@@ -20,10 +22,11 @@ public class Volunteer {
 
     }
 
-    public Volunteer(long id, String firstName, String lastName, String emailAddress, int status, boolean adoptedBefore, boolean hasCertifications) {
+    public Volunteer(long id, String firstName, String lastName, String username,String emailAddress, int status, boolean adoptedBefore, boolean hasCertifications) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.emailAddress = emailAddress;
         this.status = status;
         this.adoptedBefore = adoptedBefore;
@@ -52,6 +55,14 @@ public class Volunteer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmailAddress() {
