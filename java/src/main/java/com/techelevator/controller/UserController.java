@@ -48,23 +48,25 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
-    public Boolean approveVolunteer(@PathVariable long volunteerId) {
-        Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
-        if (jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
-            return true;
-        }
-        else {
-            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, 0L);
-            return false;
+    @RequestMapping(path = "/admin/approve", method = RequestMethod.PUT)
+    public void approveVolunteer(@RequestBody long[] volunteerIds) {
+        Volunteer volunteer;
+        for (long volunteerId : volunteerIds) {
+            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
+            if (!jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
+                jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Pending");
+            }
         }
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(path = "/admin/decline/{volunteerId}", method = RequestMethod.PUT)
-    public void declineVolunteer(@PathVariable long volunteerId) { //TODO, should this be void?
-        Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-        jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Declined");
+    @RequestMapping(path = "/admin/decline", method = RequestMethod.PUT)
+    public void declineVolunteer(@RequestBody long[] volunteerIds) { //TODO, should this be void?
+        Volunteer volunteer;
+        for (long volunteerId : volunteerIds) {
+            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Declined");
+        }
     }
 }
