@@ -11,6 +11,8 @@ public interface VolunteerDao {
 
     List<Volunteer> getAllPendingAndApprovedVolunteers();
 
+    List<Volunteer> getAllPendingVolunteers();
+
     void changeVolunteerApprovalStatus(long id, String statusStr);
     void changeVolunteerApprovalStatus(long id, long statusId);
 }
