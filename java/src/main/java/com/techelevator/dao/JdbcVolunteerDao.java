@@ -73,7 +73,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public void changeVolunteerApprovalStatus(long id, long statusId) {
-        String sql = "UPDATE volunteer SET (approval_status_id) = (?) " +
+        String sql = "UPDATE volunteers SET approval_status_id = ? " +
                 "WHERE volunteer_id = ?;";
         jdbcTemplate.update(sql, statusId, id);
     }
