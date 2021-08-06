@@ -11,6 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentRole = localStorage.getItem('role');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -21,8 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     animalCards: [],
-    isAuth: false,
-    updatePetId: 0
+    role: currentRole || '',
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -36,13 +36,18 @@ export default new Vuex.Store({
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      localStorage.removeItem('user');      
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
     },
     SET_CARDS(state, data) {
       state.animalCards = data;
+    },
+    SET_ROLE(state, role) {
+      state.role = role;
+      localStorage.setItem('role', role)
     }
+    
   }
 })

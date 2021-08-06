@@ -7,7 +7,7 @@ export default {
   created() {
     this.$store.commit("LOGOUT");
     this.$router.push("/");
-    this.$store.state.isAuth = false;
+    this.$store.state.role = ''
   }
 };
 </script>
