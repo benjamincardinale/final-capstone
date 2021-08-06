@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <nav-panel />
-    <the-header />
-    <hidden-functions/>
-    <router-view class="routerView" />
-    <the-footer />
+    <ul>
+    <li><the-header class="header" /></li>
+    <li><nav-panel class="nav" /></li>
+    <li><hidden-functions class="hidFunc" /></li>
+    <li><router-view class="routerView" /></li>
+    <li><the-footer class="footer" /></li>
+    </ul>
   </div>
 </template>
 
@@ -12,7 +14,7 @@
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import NavPanel from "@/components/NavPanel.vue";
-import HiddenFunctions from './components/HiddenFunctions.vue';
+import HiddenFunctions from "./components/HiddenFunctions.vue";
 
 export default {
   components: {
@@ -27,33 +29,38 @@ export default {
 <style>
 body {
   /*background-image: url("assets/background_image.jpg");*/
-  background: rgb(234, 231, 220);
-  background-attachment: fixed;
- /*display:grid;
+ background: hsla(47, 25%, 89%, 0.75);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+ /*display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-   "nav-panel the-header the-header the-header"
-   "nav-panel hidden-functions router-view router-view"
-   "nav-panel router-view router-view router-view "
-   "nav-panel the-footer the-footer the-footer";*/
+    "header header header header"
+    "nav hidFunc routerView routerView"
+    "nav routerView routerView routerView"
+    "footer footer footer footer";*/
 }
-.routerView{
+.routerView {
   text-align: center;
+ 
 }
 
-the-header {
-  grid-area: the-header;
+.header {
+  grid-area: header;
 }
-nav-panel{
-  grid-area: nav-panel;
+.nav {
+  grid-area: nav;
 }
-hidden-functions{
-  grid-area: hidden-functions;
+.hidFunc {
+  grid-area: hidFunc;
 }
-router-view{
-  grid-area: router-view;
+.app .routerView {
+  grid-area: routerView;
 }
-footer{
+.footer {
   grid-area: footer;
+
 }
+
 </style>
