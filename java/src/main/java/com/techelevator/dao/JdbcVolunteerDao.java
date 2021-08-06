@@ -18,7 +18,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
     }
 
     @Override
-    public List<Volunteer> getAllPendingAndApprovedVolunteers() {
+    public List<Volunteer> getAllPendingAndApprovedVolunteers() { //TODO this will also include volunteers with an approval status of DECLINED
         List<Volunteer> pendingAndApprovedVolunteers = new ArrayList<>();
         String sql = VOLUNTEER_SELECT;
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -26,6 +26,17 @@ public class JdbcVolunteerDao implements VolunteerDao{
             pendingAndApprovedVolunteers.add(mapRowToVolunteer(results));
         }
         return pendingAndApprovedVolunteers;
+    }
+
+    @Override
+    public List<Volunteer> getAllPendingVolunteers() {
+        List<Volunteer> pendingVolunteers = new ArrayList<>();
+        String sql = VOLUNTEER_SELECT + " WHERE approval_status_id = 0;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            pendingVolunteers.add(mapRowToVolunteer(results));
+        }
+        return pendingVolunteers;
     }
 
     @Override
