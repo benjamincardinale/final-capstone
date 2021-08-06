@@ -47,7 +47,7 @@ public class UserController {
         return jdbcVolunteerDao.getAllPendingVolunteers();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')") //Unsure if it should be this or just 'ADMIN', so I will check a previous project later and make sure.
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(path = "/admin/approve/{volunteerId}", method = RequestMethod.PUT)
     public Boolean approveVolunteer(@PathVariable long volunteerId) {
         Volunteer volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
