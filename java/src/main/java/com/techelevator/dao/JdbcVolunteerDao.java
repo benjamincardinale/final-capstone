@@ -11,8 +11,9 @@ import java.util.List;
 @Service
 public class JdbcVolunteerDao implements VolunteerDao{
     private JdbcTemplate jdbcTemplate;
-    private static final String VOLUNTEER_SELECT = "SELECT volunteer_id, first_name, last_name, username, email_address, " +
-            "has_adopted_before, has_any_certifications, approval_status_id FROM volunteers";
+    private static final String VOLUNTEER_SELECT = "SELECT v.volunteer_id, v.first_name, v.last_name, v.username, v.email_address, " +
+            "v.has_adopted_before, v.has_any_certifications, v.approval_status_id, a.approval_status_description " +
+            "FROM volunteers v JOIN approval_statuses a ON v.approval_status_id = a.approval_status_id";
     public JdbcVolunteerDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -20,7 +21,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public List<Volunteer> getAllPendingAndApprovedVolunteers() { //TODO this will also include volunteers with an approval status of DECLINED
         List<Volunteer> pendingAndApprovedVolunteers = new ArrayList<>();
-        String sql = VOLUNTEER_SELECT;
+        String sql = VOLUNTEER_SELECT + ";";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             pendingAndApprovedVolunteers.add(mapRowToVolunteer(results));
@@ -31,7 +32,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public List<Volunteer> getAllPendingVolunteers() {
         List<Volunteer> pendingVolunteers = new ArrayList<>();
-        String sql = VOLUNTEER_SELECT + " WHERE approval_status_id = 0;";
+        String sql = VOLUNTEER_SELECT + " WHERE a.approval_status_description = 'Pending';";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             pendingVolunteers.add(mapRowToVolunteer(results));
@@ -41,7 +42,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public Volunteer getVolunteerFromId(long id) {
-        String sql = VOLUNTEER_SELECT + " WHERE volunteer_id = ?;";
+        String sql = VOLUNTEER_SELECT + " WHERE v.volunteer_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if (result.next()) {
             return mapRowToVolunteer(result);
@@ -84,7 +85,7 @@ public class JdbcVolunteerDao implements VolunteerDao{
         newVolunteer.setLastName(row.getString("last_name"));
         newVolunteer.setUsername(row.getString("username"));
         newVolunteer.setEmailAddress(row.getString("email_address"));
-        newVolunteer.setStatus(row.getInt("approval_status_id"));
+        newVolunteer.setStatus(row.getString("approval_status_description"));
         newVolunteer.setAdoptedBefore(row.getBoolean("has_adopted_before"));
         newVolunteer.setHasCertifications(row.getBoolean("has_any_certifications"));
         return newVolunteer;
