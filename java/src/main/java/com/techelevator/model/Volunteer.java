@@ -16,13 +16,13 @@ public class Volunteer {
     private boolean adoptedBefore;
     @NotBlank(message = "Must be either true or false")
     private boolean hasCertifications;
-    private int status;
+    private String status;
 
     public Volunteer() {
 
     }
 
-    public Volunteer(long id, String firstName, String lastName, String username,String emailAddress, int status, boolean adoptedBefore, boolean hasCertifications) {
+    public Volunteer(long id, String firstName, String lastName, String username,String emailAddress, String status, boolean adoptedBefore, boolean hasCertifications) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -73,11 +73,11 @@ public class Volunteer {
         this.emailAddress = emailAddress;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
