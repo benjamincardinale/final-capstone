@@ -58,7 +58,7 @@
           <label for="gender-f"> F</label>
           <br>
           <label for="adopted">Adopted?</label>
-          <input type="checkbox" id="adopted" name="adopted">
+          <input type="checkbox" id="adopted" name="adopted" v-model="adopted">
 
         </div>
         <label for="age">Pet's age in months: </label>
@@ -97,6 +97,19 @@
           </button>
         </div>
       </form>
+      <div class="adopted-form" v-if="adopted == true">
+        <form class="adoption">
+          <label for="adopter">Name of Adopter: </label>
+          <input type="text" id="adopter" name="adopter" v-model="adoptionInfo.name">
+          <label for="adoption-date">Adoption Date: </label>
+          <input type="date" id="adoption-date" name="adoption-date" v-model="adoptionInfo.date">
+          <div class="adoption-btns">
+            <button class="btn btn-submit">SUBMIT</button>
+            <button class="btn btn-cancel" type="cancel" v-on:click="resetAdoptionForm">CANCEL</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </template>
@@ -108,6 +121,7 @@ export default {
   name: "update-pets",
   data() {
     return {
+      adopted: false,
       targetAnimal: {
         id: "",
         name: "",
@@ -117,6 +131,11 @@ export default {
         description: "",
         imageUrl: "",
       },
+      adoptionInfo: {
+        name: "",
+        date: "",
+        animalId: "",
+      }
     };
   },
   methods: {
@@ -165,6 +184,20 @@ export default {
         this.$store.commit("SET_CARDS", response.data);
       })
     },
+    adoptedAnimal() {
+      this.adoptionInfo.animalId = this.targetAnimal.id
+      //add adoption post here and in animalService 
+      //then success
+      //catch error
+    },
+    resetAdoptionForm() {
+        this.adoptionInfo = {
+            name: "",
+            date: "",
+            animalId: this.targetAnimal.id,
+        }
+        this.adopted = false;
+    }
 
   },
 };
@@ -238,5 +271,16 @@ export default {
     max-height: 25px;
     max-width: 75px;
     
+}
+.adopted-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.adoption-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
