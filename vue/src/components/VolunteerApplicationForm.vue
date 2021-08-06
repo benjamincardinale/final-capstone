@@ -4,6 +4,8 @@
     <div id="volunteer-form">
       <form v-on:submit.prevent="submitForm">
         <div class="text-boxes">
+          <label for="userName">Username: </label>
+          <input type="text" id="userName" name="userName" v-model="application.userName"><br>
           <label for="fname">First name:</label>
           <input
             type="text"
@@ -54,6 +56,7 @@ export default {
     data() {
         return {
             application: {
+                userName: "",
                 firstName: "",
                 lastName: "",
                 emailAddress: "",
@@ -65,6 +68,7 @@ export default {
     methods: {
         submitForm() {
         const newApp = {
+            username: this.application.userName,
             firstName: this.application.firstName,
             lastName: this.application.lastName,
             emailAddress: this.application.emailAddress,
@@ -103,6 +107,10 @@ export default {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 2.5em;
   padding: 40px;
+}
+#userName {
+  font-size: 14pt;
+  height: 40px;
 }
 #fname {
   font-size: 16pt;
