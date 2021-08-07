@@ -8,6 +8,12 @@ export default {
     },
     getPending() {
         return axios.get('/admin/pending')
-    }
+    },
+   putApproved(arrayOfIds) {
+       return axios.put('/admin/approve', arrayOfIds)
+   },
+   putDeclined(arrayOfIds) {
+       return axios.put('/admin/decline', arrayOfIds)
+   } 
     
 }

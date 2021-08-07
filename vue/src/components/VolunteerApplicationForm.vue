@@ -84,7 +84,7 @@ export default {
                 } 
             })
             .catch(error => {
-                alert("Error: " + error.status)
+                alert("Error: try using a different username: " + error.message)
             })
         },
         cancelForm() {

@@ -1,18 +1,21 @@
 <template>
   <div class="main">
       <h2 class= "title"> Volunteers Awaiting Approval</h2>
-      <table class="volunteer-table">
+      <button class="reload" v-on:click="retrievePending()">RELOAD</button>
+      <h3 v-if="$store.state.pendingApplications.length == 0" > No pending applications </h3>
+      <table class="volunteer-table" v-else>
           <tr class="table-head">
-              <th>| ID | </th>
-              <th> |Username| </th> 
-              <th>|First|</th> 
-              <th> |Last|</th> 
-              <th>|E-mail Address| </th> 
-              <th> |Adopted before| </th> 
-              <th> |Certifcations|</th> 
+              <th>Select</th>
+              <th>ID</th>
+              <th>Username</th> 
+              <th>First</th> 
+              <th>Last</th> 
+              <th>E-mail Address</th> 
+              <th>Adopted before</th> 
+              <th>Certifcations</th> 
           </tr>
             <tr class="volunteer-object-loop" v-for="item in $store.state.pendingApplications" v-bind:key="item.id">
-                <td>
+                <td class="boxes">
                     <input type="checkbox"
                     v-bind:checked="selectedIds.includes(item.id)"
                     v-bind:id="item.id" v-bind:value="item.id"
@@ -32,7 +35,7 @@
                 <button class= "approve" v-on:click="approve()">APPROVE</button>
                 <button class= "reject" v-on:click="reject()"> REJECT</button>
             </div>
-
+        
       </table>
 
 
@@ -42,7 +45,6 @@
 
 <script>
 import volunteerService from '../services/VolunteerService.js'
-
 export default {
     name: "volunteer-approval",
 
@@ -65,10 +67,26 @@ export default {
             this.selectedIds = [];
         },
         approve() {
-            // send array of selectedIDs to approve endpoint
+            volunteerService.putApproved(this.selectedIds).then(response => {
+                if(response.status === 200) {
+                    alert('Submission Success');
+                }    
+            })
+            .catch(error => {
+                alert('Error: ' + error.message);
+            })
+            this.resetCheckBoxes();
         },
         reject() {
-           // send array of selectedIDs to rejected endpoint     
+           volunteerService.putDeclined(this.selectedIds).then(response => {
+               if(response.status === 200) {
+                    alert('Submission Success');
+                }  
+           })
+           .catch(error => {
+               alert('Error: ' + error.message);
+           })
+           this.resetCheckBoxes();   
         }
     }
 }    
@@ -85,14 +103,35 @@ export default {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 14pt;
 }
+.volunteer-table {
+   max-width: 50vw;
+   margin: 0 10% 0 12.5%;
+}
 
 .volunteer-table td {
     padding: 10px;
     border: 1px solid black;
-
+    
 }
 .volunteer-table th {
     padding: 2px;
-} 
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    font-size: .5em;
+    max-width: 40px;
+    align-items: center;
+    margin-left: 30px;
 
+}
+button {
+    min-width: 100px;
+}
+td > input {
+    max-width: 50px;
+}
+.reload {
+    max-width: 25vw;
+}
 </style>

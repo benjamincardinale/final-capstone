@@ -85,7 +85,7 @@ export default {
                 }
             })
             .catch(error => {
-                alert("Error: try again : " + error.status)
+                alert("Error: try again : " + error.message)
             })
 
         }
