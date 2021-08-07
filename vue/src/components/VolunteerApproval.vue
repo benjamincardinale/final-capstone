@@ -1,7 +1,6 @@
 <template>
   <div class="main">
       <h2 class= "title"> Volunteers Awaiting Approval</h2>
-      <button class="reload" v-on:click="retrievePending()">RELOAD</button>
       <h3 v-if="$store.state.pendingApplications.length == 0" > No pending applications </h3>
       <table class="volunteer-table" v-else>
           <tr class="table-head">
@@ -73,9 +72,11 @@ export default {
                 }    
             })
             .catch(error => {
-                alert('Error: ' + error.message);
+                alert('Error: ' + error.status);
             })
+            this.retrievePending();
             this.resetCheckBoxes();
+            
         },
         reject() {
            volunteerService.putDeclined(this.selectedIds).then(response => {
@@ -84,7 +85,7 @@ export default {
                 }  
            })
            .catch(error => {
-               alert('Error: ' + error.message);
+               alert('Error: ' + error.status);
            })
            this.resetCheckBoxes();   
         }
@@ -92,7 +93,7 @@ export default {
 }    
 </script>
 
-<style>
+<style scoped>
 
 .main {
     display: flex;
@@ -123,15 +124,13 @@ export default {
     max-width: 40px;
     align-items: center;
     margin-left: 30px;
-
-}
+    
+}   
 button {
     min-width: 100px;
 }
 td > input {
     max-width: 50px;
 }
-.reload {
-    max-width: 25vw;
-}
+
 </style>

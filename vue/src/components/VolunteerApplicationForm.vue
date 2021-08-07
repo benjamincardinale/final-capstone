@@ -1,7 +1,7 @@
 <template>
   <div class="app-card">
     <h1 class="title">Volunteer Application</h1>
-    <div id="volunteer-form">
+    <div class="volunteer-form">
       <form v-on:submit.prevent="submitForm">
         <div class="text-boxes">
           <label for="userName">Username: </label>
@@ -95,10 +95,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .app-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 50vh;
+  font-size: 16pt;
+  
 
 }
 
@@ -127,18 +131,16 @@ export default {
 
 
 
-#volunteer-form{
+.volunteer-form{
   display: flex;  
   flex-direction: column;
-  max-width: 50%;
+  align-items: center;
+  max-width: 45vw;
   background-color: rgba(255, 255, 255, 0.356);
   border: 2px solid black;
   padding: 35px;
   border-radius: 45px;
-  margin-right: 20%;
-  margin-left: 23%;
-  margin-top: 2.5%;
-  margin-bottom: 10%;
+  margin: 2.5vw 20vw 2.5vw 25vw
 }
 .text-boxes {
   display: flex;
@@ -152,16 +154,12 @@ export default {
   text-align: center;
   font-size: 1em;
 }
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
+
 button {
-  width: 40%;
-  font-size: 1.5em;
-}
-button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  margin: 0 0 2.5vh 35vw;
+  padding: 10px;
+  width: 25vw;
+  font-size: 2em;
 }
 
 </style>
