@@ -137,7 +137,7 @@ export default {
   border-radius: 45px;
   margin-right: 20%;
   margin-left: 23%;
-  margin-top: 10%;
+  margin-top: 2.5%;
   margin-bottom: 10%;
 }
 .text-boxes {

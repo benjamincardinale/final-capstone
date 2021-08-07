@@ -5,7 +5,7 @@
       <li><router-link v-bind:to="{ name: 'home' }" >Home</router-link></li><br>
       <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li><br>
       <li><router-link id="volunteer-registration" v-bind:to="{ name: 'apply' }"
-        >Volunteer Registration</router-link
+        >Volunteers Register Here</router-link
       ></li><br><br>
       <li><router-link v-bind:to="{ name: 'logout' }">Logout</router-link
       ></li><br>
@@ -47,7 +47,6 @@ ul li{
 }
 .router-link-exact-active {
   color: white;
-  font-weight: bold;
 }
 
 </style>
