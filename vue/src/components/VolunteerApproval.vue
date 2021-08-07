@@ -104,9 +104,13 @@ export default {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 14pt;
 }
+h2 {
+    font-size: 2em;
+    margin-bottom: 4vh;
+}
 .volunteer-table {
    max-width: 50vw;
-   margin: 0 10% 0 12.5%;
+   margin: 0 10% 0 14%;
 }
 
 .volunteer-table td {
