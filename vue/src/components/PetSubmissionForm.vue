@@ -130,10 +130,10 @@ export default {
     this.selectedFile = event.target.files[0];
     },
     onUpload() {
-      const formData = new FormData();
+      /*const formData = new FormData();
       formData.append("myFile", this.selectedFile);
-      console.log(formData);
-      axios.post("https://api.imgbb.com/1/upload?key=cf122104a5dfbf471b70ae94aea0eacd", formData)
+      console.log(formData);*/
+      axios.post("http://localhost:8080/upload", this.selectedFile)
       .then(res => {
           console.log(res);
       })
