@@ -54,7 +54,7 @@ public class UserController {
         for (long volunteerId : volunteerIds) {
             volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
             jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
-            if (!jdbcUserDao.create(volunteer.getUsername(), "newuser", "ROLE_USER")) {
+            if (!jdbcUserDao.create(volunteer.getUsername(), "newuser", "USER")) {
                 jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Pending");
             }
         }
