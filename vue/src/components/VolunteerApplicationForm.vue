@@ -135,12 +135,12 @@ export default {
   display: flex;  
   flex-direction: column;
   align-items: center;
-  max-width: 45vw;
+  max-width: 60vw;
   background-color: rgba(255, 255, 255, 0.356);
   border: 2px solid black;
   padding: 35px;
   border-radius: 45px;
-  margin: 2.5vw 20vw 2.5vw 25vw
+  margin: 2.5vh 20vw 2.5vh 25vw
 }
 .text-boxes {
   display: flex;
@@ -148,7 +148,8 @@ export default {
   text-align: left;
   justify-content: space-between;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 2em;  
+  font-size: 1.85em;
+  margin: 0 4.5vw 0 4.5vw;
 }
 .radio-btns {
   text-align: center;
@@ -156,10 +157,9 @@ export default {
 }
 
 button {
-  margin: 0 0 2.5vh 35vw;
   padding: 10px;
   width: 25vw;
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 </style>
