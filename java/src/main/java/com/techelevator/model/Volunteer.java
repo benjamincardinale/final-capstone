@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class Volunteer {
     private long id;
@@ -12,9 +13,9 @@ public class Volunteer {
     private String username;
     @NotBlank(message = "Must have an email address.")
     private String emailAddress;
-    @NotBlank(message = "Must be either true or false")
+    @NotNull(message = "Must be either true or false")
     private boolean adoptedBefore;
-    @NotBlank(message = "Must be either true or false")
+    @NotNull(message = "Must be either true or false")
     private boolean hasCertifications;
     private String status;
 
