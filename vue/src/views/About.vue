@@ -14,8 +14,5 @@ export default {
 </script>
 
 <style>
-h1 {
-    margin-top: -50px;
-    margin-bottom: 80px;
-}
+
 </style>

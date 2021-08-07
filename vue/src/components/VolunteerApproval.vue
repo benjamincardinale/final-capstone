@@ -86,9 +86,6 @@ export default {
     font-size: 14pt;
 }
 
-.volunteer-table {
-   
-}
 .volunteer-table td {
     padding: 10px;
     border: 1px solid black;

@@ -33,6 +33,7 @@ export default {
     justify-content: space-around;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 16pt; 
+    margin-top: 15px;
 }
 .add {
     border: 2px solid rgba(248, 203, 4, 0.753);
