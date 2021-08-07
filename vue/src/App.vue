@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <ul>
-    <li><the-header class="header" /></li>
-    <li><nav-panel class="nav" /></li>
-    <li><hidden-functions class="hidFunc" /></li>
-    <li><router-view class="routerView" /></li>
-    <li><the-footer class="footer" /></li>
-    </ul>
+   
+   <the-header class="header" />
+   <nav-panel class="nav" />
+   <hidden-functions class="hidFunc" />
+   <router-view class="routerView" />
+   <the-footer class="footer" />
+   
   </div>
 </template>
 
@@ -14,7 +14,7 @@
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import NavPanel from "@/components/NavPanel.vue";
-import HiddenFunctions from "./components/HiddenFunctions.vue";
+import HiddenFunctions from "@/components/HiddenFunctions.vue";
 
 export default {
   components: {
@@ -46,21 +46,6 @@ body {
  
 }
 
-.header {
-  grid-area: header;
-}
-.nav {
-  grid-area: nav;
-}
-.hidFunc {
-  grid-area: hidFunc;
-}
-.app .routerView {
-  grid-area: routerView;
-}
-.footer {
-  grid-area: footer;
 
-}
 
 </style>

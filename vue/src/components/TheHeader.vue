@@ -18,12 +18,14 @@ export default {
 .the-header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   background: linear-gradient(90deg, rgba(233, 128, 116), rgba(233, 128, 116),rgba(255,203,154,.5)/*rgba(214, 126, 126, 0.479)*/);
   border-radius: 25px;
   padding-top: 15px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
-  margin-top: -19px;
+  margin-top: -10px;
+  max-height: 26vh;
   
   
   
@@ -33,20 +35,22 @@ export default {
   margin-top: -20px;
   margin-bottom: -40px;
   text-decoration: underline;
-  font-size: 100px;
+  font-size: 10vh;
+  padding-left: 15px;
 }
 h2 {
-  font-size: 45px;
+  padding-top: 10px;
+  font-size: 5vh;
   margin-bottom: 10px;
 }
 .header-logo {
-  max-height: 150px;
-  max-width: 140px;
+  max-height: 15vh;
+  max-width: 10vw;
   flex-grow: 1;
-  margin-left: 300px;
+  margin-left: 20vw;
 }
 .header-text {
   flex-grow: 2;
-  padding-right: 350px;
+  padding-right: 30vw;
 }
 </style>
