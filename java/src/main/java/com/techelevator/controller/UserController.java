@@ -47,15 +47,17 @@ public class UserController {
         return jdbcVolunteerDao.getAllPendingVolunteers();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/admin/approve", method = RequestMethod.PUT)
-    public void approveVolunteer(@RequestBody long[] volunteerIds) {
+    public void approveVolunteer(@RequestBody int[] volunteerIds) {
         Volunteer volunteer;
-        for (long volunteerId : volunteerIds) {
-            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerId);
-            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Approved");
+        long volunteerIdL;
+        for (int volunteerId : volunteerIds) {
+            volunteerIdL = Integer.toUnsignedLong(volunteerId);
+            volunteer = jdbcVolunteerDao.getVolunteerFromId(volunteerIdL);
+            jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerIdL, "Approved");
             if (!jdbcUserDao.create(volunteer.getUsername(), "newuser", "USER")) {
-                jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerId, "Pending");
+                jdbcVolunteerDao.changeVolunteerApprovalStatus(volunteerIdL, "Pending");
             }
         }
     }
