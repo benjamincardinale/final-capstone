@@ -50,7 +50,7 @@
         />
         <label for="image-url">Upload Image: </label>
         <input type="file" @change="onFileChanged" />
-        <button @click="onUpload">Upload!</button>
+        <button @click.prevent="onUpload">Upload!</button>
 
         <div class="buttons">
           <button class="btn btn-submit">SUBMIT</button>
@@ -69,7 +69,7 @@
 
 <script>
 import animalService from "../services/AnimalService.js";
-import axios from 'axios';
+import imageService from "../services/ImageService.js"
 
 export default {
   name: "pet-submission-form",
@@ -133,10 +133,11 @@ export default {
       /*const formData = new FormData();
       formData.append("myFile", this.selectedFile);
       console.log(formData);*/
-      axios.post("http://localhost:8080/upload", this.selectedFile)
+      /*axios.post("http://localhost:8080/upload", this.selectedFile)
       .then(res => {
-          console.log(res);
-      })
+          console.log(res); 
+      }) */
+    imageService.addImage(this.selectedFile);
     },
   },
 };
