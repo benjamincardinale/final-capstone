@@ -63,6 +63,14 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public boolean updatePassword(String username, String password) {
+        User userToUpdate = findByUsername(username);
+        String newPasswordHash = new BCryptPasswordEncoder().encode(password);
+        //TODO
+        return false;
+    }
+
+    @Override
     public boolean create(String username, String password, String role) {
         boolean userCreated = false;
 
