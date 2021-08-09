@@ -1,6 +1,7 @@
 <template>
   <div class="main">
       <h2 class= "title"> Volunteers Awaiting Approval</h2>
+      <button v-on:click="retrievePending()" class="reload">Reload Applications</button>
       <h3 v-if="$store.state.pendingApplications.length == 0" > No pending applications </h3>
       <table class="volunteer-table" v-else>
           <tr class="table-head">
@@ -64,30 +65,34 @@ export default {
         },
         resetCheckBoxes() {
             this.selectedIds = [];
+            this.retrievePending();
         },
         approve() {
             volunteerService.putApproved(this.selectedIds).then(response => {
                 if(response.status === 200) {
-                    alert('Submission Success');
+                    this.resetCheckBoxes();
+                    alert('Success!')
                 }    
             })
             .catch(error => {
+                this.resetCheckBoxes();
                 alert('Error: ' + error.status);
             })
-            this.retrievePending();
-            this.resetCheckBoxes();
+           
             
         },
         reject() {
            volunteerService.putDeclined(this.selectedIds).then(response => {
                if(response.status === 200) {
+                    this.resetCheckBoxes(); 
                     alert('Submission Success');
                 }  
            })
            .catch(error => {
+               this.resetCheckBoxes();
                alert('Error: ' + error.status);
            })
-           this.resetCheckBoxes();   
+             
         }
     }
 }    
@@ -106,7 +111,7 @@ export default {
 }
 h2 {
     font-size: 2em;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
 }
 .volunteer-table {
    max-width: 50vw;
@@ -135,6 +140,10 @@ button {
 }
 td > input {
     max-width: 50px;
+}
+.reload {
+    font-size: 1.5em;
+    margin-bottom: 1vh;
 }
 @media (max-width: 1000px) {
     .main {

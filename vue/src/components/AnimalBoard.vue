@@ -52,7 +52,7 @@ export default {
   flex-wrap: nowrap;
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 2.5%;
+  margin-top: 4vh;
 }
 .petCard {
     display: flex;

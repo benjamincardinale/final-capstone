@@ -4,9 +4,7 @@
       
         <router-link v-bind:to="{name: 'update'}" v-if="$store.state.role != ''" class="update">Update Pet</router-link>
 
-        <router-link v-bind:to="{name: 'contact-list-view'}" v-if="$store.state.role != ''" class="contact">Contact List</router-link>
-        
-        <router-link v-bind:to="{name: 'volunteer-pending'}" v-if="$store.state.role == 'ROLE_ADMIN'" class="admin">ADMIN PAGE</router-link>
+        <router-link v-bind:to="{name: 'volunteer-pending'}" v-if="$store.state.role == 'ROLE_ADMIN'" class="admin">Admin Page</router-link>
             <!-- CHANGE TO ACTUAL PATH ONCE CREATED -->
         
 

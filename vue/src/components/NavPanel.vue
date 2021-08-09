@@ -4,11 +4,12 @@
       <ul class="nav-links">
       <li><router-link v-bind:to="{ name: 'home' }" >Home</router-link></li><br>
       <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li><br>
-      <li><router-link id="volunteer-registration" v-bind:to="{ name: 'apply' }"
-        >Volunteers Register Here</router-link
-      ></li><br><br>
+      <li><router-link id="volunteer-registration" v-bind:to="{ name: 'apply' }" v-if="$store.state.role == ''"
+        >Volunteers Register Here</router-link>
+        <router-link id="contact-list" v-else v-bind:to="{name: 'contact-list-view'}" >Contact List</router-link>
+      </li><br>
       <li><router-link v-bind:to="{ name: 'logout' }">Logout</router-link
-      ></li><br>
+      ></li>
       <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
       </ul>
     </div>
@@ -39,7 +40,7 @@ export default {
   flex-direction: column;
   position: fixed;
   width: 14vw;
-  margin: 10px 0 -10px 10px
+  margin: 5vh 0 5vh 5px;
 }
 ul li{
   list-style-type: none;
