@@ -153,7 +153,7 @@ export default {
 }
 .radio-btns {
   text-align: center;
-  font-size: 1em;
+  font-size: .85em;
 }
 
 button {
