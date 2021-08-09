@@ -69,7 +69,8 @@
 
 <script>
 import animalService from "../services/AnimalService.js";
-import imageService from "../services/ImageService.js"
+//import imageService from "../services/ImageService.js"
+import axios from 'axios';
 
 export default {
   name: "pet-submission-form",
@@ -132,12 +133,19 @@ export default {
     onUpload() {
       /*const formData = new FormData();
       formData.append("myFile", this.selectedFile);
-      console.log(formData);*/
-      /*axios.post("http://localhost:8080/upload", this.selectedFile)
+      console.log(formData);
+      axios.post("http://localhost:8080/upload", this.selectedFile)
       .then(res => {
           console.log(res); 
       }) */
-    imageService.addImage(this.selectedFile);
+      const formData = new FormData();
+      formData.append("myFile", this.selectedFile);
+      console.log(formData);
+      axios.post("http://localhost:8080/image/upload", this.selectedFile /*{'Content-Type': 'multipart/form-data'}*/)
+      .then(res => {
+          console.log(res); 
+      })
+    //imageService.addImage(this.selectedFile);
     },
   },
 };
