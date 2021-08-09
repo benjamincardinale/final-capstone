@@ -1,6 +1,10 @@
 package com.techelevator.model;
 
 public class ImageDto {
+    public Data getData() {
+        return data;
+    }
+
     private Data data;
     private boolean success;
     private int status;

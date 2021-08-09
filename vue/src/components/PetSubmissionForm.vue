@@ -69,8 +69,8 @@
 
 <script>
 import animalService from "../services/AnimalService.js";
-//import imageService from "../services/ImageService.js"
-import axios from 'axios';
+import imageService from "../services/ImageService.js";
+//import axios from 'axios';
 
 export default {
   name: "pet-submission-form",
@@ -85,6 +85,7 @@ export default {
         imageUrl: "",
       },
       selectedFile: null,
+      fileAsB64: null
     };
   },
   methods: {
@@ -127,28 +128,37 @@ export default {
           alert("Error: try again : " + error.message);
         });
     },
+    getBase64(file) {
+      let self = this;
+      console.log(self);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        console.log(reader.result);
+        self.fileAsB64 = reader.result.substring(reader.result.indexOf(',')+1);
+      };
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
+      };
+    },
     onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
+      this.selectedFile = event.target.files[0];
+      this.getBase64(this.selectedFile);
     },
     onUpload() {
       /*const formData = new FormData();
       formData.append("myFile", this.selectedFile);
       console.log(formData);
-      axios.post("http://localhost:8080/upload", this.selectedFile)
+      axios.post("http://localhost:8080/image/upload", this.selectedFile {'Content-Type': 'multipart/form-data'})
       .then(res => {
           console.log(res); 
-      }) */
-      const formData = new FormData();
-      formData.append("myFile", this.selectedFile);
-      console.log(formData);
-      axios.post("http://localhost:8080/image/upload", this.selectedFile /*{'Content-Type': 'multipart/form-data'}*/)
-      .then(res => {
-          console.log(res); 
-      })
-    //imageService.addImage(this.selectedFile);
-    },
+      })*/
+      //let imageAsB64 = this.getBase64(this.selectedFile);
+      //console.log(imageAsB64);
+      imageService.addImage(this.fileAsB64);
   },
-};
+}
+}
 </script>
 
 <style scoped>
