@@ -46,8 +46,6 @@ public class PetController {
 
         ResponseEntity<ImageDto> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ImageDto.class);
 
-
-
         return response.getBody().getDataUrl();
     }
 
@@ -64,14 +62,18 @@ public class PetController {
     }
     
     @RequestMapping(path = "/pet/update/{petId}", method = RequestMethod.PUT) //wew, come back to this one.
-    public void updatePet(@Valid @RequestBody PetWithImage pet, @PathVariable long petId) {
-        pet.setId(petId);
-        String url = null;
-        try {
-            url = addImage(pet.getImage());
-        } catch (Exception e) {
-            System.out.println(e);
+    public void updatePet(@Valid @RequestBody PetWithImage petWithImage, @PathVariable long petId) {
+        petWithImage.setId(petId);
+        Pet pet = petWithImage.getPet(null);
+        if (petWithImage.getImage() == null) {
+            pet.setImageUrl(jdbcPetDao.getPetFromId(pet.getId()).getImageUrl());
+        } else {
+            try {
+                pet.setImageUrl(addImage(petWithImage.getImage()));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
-        jdbcPetDao.updatePet(pet.getPet(url));
+        jdbcPetDao.updatePet(pet);
     }
 }
