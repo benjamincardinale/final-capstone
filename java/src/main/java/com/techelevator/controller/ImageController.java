@@ -82,7 +82,7 @@ public class ImageController {
 
         ResponseEntity<ImageDto> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ImageDto.class);
 
-        
+
 
         return response.getBody().getDataUrl();
     }

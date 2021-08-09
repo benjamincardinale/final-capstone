@@ -20,12 +20,13 @@ import java.util.List;
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class PetController {
-    private JdbcPetDao jdbcPetDao;
-    private RestTemplate restTemplate;
 
-    public PetController(JdbcPetDao jdbcPetDao, RestTemplate restTemplate) {
+    private JdbcPetDao jdbcPetDao;
+    private RestTemplate restTemplate = new RestTemplate();
+
+    public PetController(JdbcPetDao jdbcPetDao) {
         this.jdbcPetDao = jdbcPetDao;
-        this.restTemplate = restTemplate;
+
     }
 
     @PreAuthorize("permitAll")

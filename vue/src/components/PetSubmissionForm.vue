@@ -50,7 +50,7 @@
         />
         <label for="image-url">Upload Image: </label>
         <input type="file" @change="onFileChanged" />
-        <button @click.prevent="onUpload">Upload!</button>
+        <!-- <button @click.prevent="onUpload">Upload!</button> -->
 
         <div class="buttons">
           <button class="btn btn-submit">SUBMIT</button>
@@ -97,7 +97,7 @@ export default {
         age: "",
         species: "",
         description: "",
-        imageUrl: "",
+        image: "",
       };
     },
     submitForm() {
@@ -107,7 +107,7 @@ export default {
         age: this.newAnimal.age,
         species: this.newAnimal.species,
         description: this.newAnimal.description,
-        imageUrl: this.newAnimal.imageUrl,
+        image: this.fileAsB64,
       };
       animalService
         .postAnimal(animalToAdd)
@@ -120,7 +120,7 @@ export default {
               age: "",
               species: "",
               description: "",
-              imageUrl: "",
+              image: "",
             };
           }
         })
