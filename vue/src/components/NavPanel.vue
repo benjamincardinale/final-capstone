@@ -59,4 +59,15 @@ ul li{
     font-size: 1.25em;
   }
 }
+@media (max-width: 700px) {
+  .nav-panel {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    margin: 7.5% 0 0 -3%;
+  }
+  .nav-links {
+    font-size: .75em;
+  }
+}
 </style>
