@@ -105,6 +105,7 @@ export default {
 h2 {
     text-align: center;
     font-size: 2em;
+    margin-top: -0.5vh;
 }
 .submission-form form {
     display: flex;
@@ -121,6 +122,7 @@ h2 {
 .submission-form input {
     margin-top: 5px;
     margin-bottom: 5px;
+    min-height: 20px;
 
 }
 .submission-form .gender-radio {
