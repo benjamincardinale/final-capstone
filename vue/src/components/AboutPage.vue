@@ -74,8 +74,5 @@ h2 span {
   .left-box {
     margin-left: 3.5em;
   }
-  .right-box {
-    margin: 2.5% 5% 10% 3%;
-  }
 }
 </style>
