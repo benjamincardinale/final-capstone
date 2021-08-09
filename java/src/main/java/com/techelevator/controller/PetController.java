@@ -34,11 +34,11 @@ public class PetController {
         return this.jdbcPetDao.getAllPets();
     }
 
-    private String addImage(Image imageBytes) throws Exception {
+    private String addImage(String imageBytes) throws Exception {
         //System.out.println(imageBytes.getImage());
         String url = "https://api.imgbb.com/1/upload?key=cf122104a5dfbf471b70ae94aea0eacd";
         MultiValueMap<String, String> bodyMap = new LinkedMultiValueMap<>();
-        bodyMap.add("image", imageBytes.getImage());
+        bodyMap.add("image", imageBytes);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(bodyMap, headers);

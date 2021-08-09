@@ -16,12 +16,12 @@ public class PetWithImage {
     private String description;
     @Min(value=0, message = "Age in months must be some number that is at least 0.")
     private int age;
-    private Image image;
+    private String image;
     private String imageDescription;
 
     public PetWithImage() {}
 
-    public PetWithImage(long id, String name, String gender, String species, String description, int age, Image image, String imageDescription) {
+    public PetWithImage(long id, String name, String gender, String species, String description, int age, String image, String imageDescription) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -80,11 +80,11 @@ public class PetWithImage {
         this.age = age;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
