@@ -19,9 +19,11 @@
           <label for="target-id">ID of pet to update: </label>
           <input
             type="text"
+            autocomplete='off'
             name="target-id"
             id="target-id"
             v-model.lazy="targetAnimal.id"
+            
           />
           <button class="btn btn-submit">SUBMIT</button>
           <button class="btn btn-reset" v-on:click="resetIdForm">RESET</button>

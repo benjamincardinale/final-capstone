@@ -63,46 +63,4 @@ h2 span {
   font-size: .85em;
 } 
 
-
-
-
-/*
-div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 
-    "title1 title2"
-    "body1 body2";
-} 
-
-.title1 {
-    grid-area: title1;
-}
-
-.title2 {
-    grid-area: title2;
-}
-
-.body1 {
-    grid-area: body1;
-}
-
-.body2 {
-    grid-area: body2;
-}
-
-
-
-h2 {
-    margin-top: 5%;
-    margin-bottom: 10%;
-    margin-left: 2.6%;
-}
-
-p span {
-  color:rgb(148, 128, 13);
-  font-size: 1.5rem;
-}*/
-
-
 </style>
