@@ -109,4 +109,15 @@ button {
   
   font-size: 1em;
 }
+@media (max-width: 1000px) {
+  .txt-boxes {
+    flex-direction: column;
+    max-width: 50vw;
+    padding: 5px;
+  }
+  #login {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}
 </style>

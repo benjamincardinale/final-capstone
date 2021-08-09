@@ -2,7 +2,7 @@
   <div class="cards">
     <div class="petCard" v-for="item in $store.state.animalCards" v-bind:key="item.id">
       <h2>{{item.name}}</h2>
-      <img :src="require('../assets/' + item.imageUrl)"
+      <img :src="item.imageUrl"
            :alt="item.imageDescription" />
       <div class="info-line">
         <p class="top-line">Gender: {{item.gender}}</p>
@@ -91,6 +91,17 @@ img {
   border: 2px solid black;
   border-radius: 30px;
 
+}
+@media (max-width: 1000px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5% 15% 0% 20%;
+    font-size: .75em;
+  }
+  
 }
 
 

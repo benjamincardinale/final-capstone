@@ -170,8 +170,9 @@ export default {
   min-height: 50vh;
 }
 h2 {
-  text-align: center;
-  font-size: 2em;
+    text-align: center;
+    font-size: 2em;
+    margin-top: -0.5vh;
 }
 .submission-form form {
   display: flex;
@@ -187,8 +188,10 @@ h2 {
   background-color: rgba(250, 201, 154, 0.479);
 }
 .submission-form input {
-  margin-top: 5px;
-  margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    min-height: 20px;
+
 }
 .submission-form .gender-radio {
   text-align: center;
@@ -196,4 +199,15 @@ h2 {
 .buttons {
   margin-top: 10px;
 }
+@media (max-width: 1000px) {
+    .main {
+        margin: 5% 15% 12.5% 25%;
+        min-height: 30vh;
+    }
+    .submission-form form {
+        padding: 15px;
+    }
+}
+
+
 </style>

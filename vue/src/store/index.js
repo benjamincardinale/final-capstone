@@ -24,6 +24,7 @@ export default new Vuex.Store({
     animalCards: [],
     role: currentRole || '',
     pendingApplications: [],
+    volunteers: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -52,7 +53,10 @@ export default new Vuex.Store({
     },
     SET_PENDING_APPLICATIONS(state, data) {
       state.pendingApplications = data;
-    }
+    },
+    SET_VOLUNTEERS(state, data) {
+      state.volunteers = data;
+    },
     
   }
 })

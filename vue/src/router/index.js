@@ -11,6 +11,7 @@ import About from '../views/About.vue'
 import UpdatePetsView from '../views/UpdatePetsView.vue'
 import VolunteerApprovalView from '../views/VolunteerApprovalView.vue'
 import ImageSubmission from '../views/ImageSubmission.vue'
+import ContactListView from '../views/ContactListView.vue'
 Vue.use(Router)
 
 /**
@@ -104,6 +105,14 @@ const router = new Router({
       component: ImageSubmission,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/contact-list",
+      name: "contact-list-view",
+      component: ContactListView,
+      meta: {
+        requiresAuth: true
       }
     }, 
   ]  

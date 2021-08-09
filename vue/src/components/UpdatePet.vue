@@ -19,9 +19,11 @@
           <label for="target-id">ID of pet to update: </label>
           <input
             type="text"
+            autocomplete='off'
             name="target-id"
             id="target-id"
             v-model.lazy="targetAnimal.id"
+            
           />
           <button class="btn btn-submit">SUBMIT</button>
           <button class="btn btn-reset" v-on:click="resetIdForm">RESET</button>
@@ -233,7 +235,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 5% 25% 10% 25%;
+  margin: 5% 25% 0 25%;
 
 }
 .id-section form {

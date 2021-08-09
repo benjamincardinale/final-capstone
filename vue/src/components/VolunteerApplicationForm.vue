@@ -153,13 +153,31 @@ export default {
 }
 .radio-btns {
   text-align: center;
-  font-size: 1em;
+  font-size: .85em;
 }
 
 button {
   padding: 10px;
   width: 25vw;
   font-size: 1.6em;
+}
+@media (max-width: 1000px) {
+  .text-boxes {
+    font-size: 1em; 
+  }
+  .title {
+    font-size: 2em;
+    margin-left: 5%;
+  }
+  .volunteer-form {
+    margin: 0 10vw 2.5vh 20vw
+  }
+  .radio-btns {
+    font-size: 1em;
+  }
+  button {
+    font-size: 1em;
+  }
 }
 
 </style>
