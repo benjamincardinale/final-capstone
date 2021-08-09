@@ -38,6 +38,16 @@ export default {
     font-size: 16pt; 
     margin: 15px 10% 0 10%;
 }
+@media (max-width: 1000px) {
+    .hidden-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 14pt;
+        margin: 0 5% 0 5%;
+    }    
+}
 .add {
     border: 2px solid rgba(248, 203, 4, 0.753);
     padding: 5px;

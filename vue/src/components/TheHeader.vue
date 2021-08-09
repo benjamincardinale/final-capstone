@@ -14,7 +14,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .the-header {
   display: flex;
   flex-direction: row;
@@ -52,5 +52,25 @@ h2 {
 .header-text {
   flex-grow: 2;
   padding-right: 30vw;
+}
+
+@media (max-width: 1000px) {
+  .the-header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(233, 128, 116), rgba(233, 128, 116),rgba(255,203,154,.5)/*rgba(214, 126, 126, 0.479)*/);
+    border-radius: 25px;
+    text-align: center;
+    max-height: 15vh;
+
+  }
+  .header-text h1 {
+    font-size: 2em;
+    margin-top: .5vh;
+  }
+  .header-text h2 {
+    font-size: 1.5em;
+    padding: 1em;
+  }
 }
 </style>

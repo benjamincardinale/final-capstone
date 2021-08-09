@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .nav-links {
   border-radius: 35px;
   text-align: center;
@@ -48,5 +48,15 @@ ul li{
 .router-link-exact-active {
   color: white;
 }
-
+@media (max-width: 1000px) {
+  .nav-panel {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    margin: 7.5% 0 0 0;
+  }
+  .nav-links {
+    font-size: 1.25em;
+  }
+}
 </style>

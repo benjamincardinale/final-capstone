@@ -62,5 +62,12 @@ h2 span {
   background: rgba(241, 138, 41, 0.219);
   font-size: .85em;
 } 
-
+@media (max-width: 1000px) {
+  .left-box {
+    margin: 2.5% 3% 10% 17%;
+  }
+  .right-box {
+    margin: 2.5% 5% 10% 3%;
+  }
+}  
 </style>

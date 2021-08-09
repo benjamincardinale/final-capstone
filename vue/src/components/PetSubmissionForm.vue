@@ -131,6 +131,15 @@ h2 {
 .buttons {
     margin-top: 10px;
 }
+@media (max-width: 1000px) {
+    .main {
+        margin: 5% 15% 12.5% 25%;
+        min-height: 30vh;
+    }
+    .submission-form form {
+        padding: 15px;
+    }
+}
 
 
 </style>

@@ -136,5 +136,16 @@ button {
 td > input {
     max-width: 50px;
 }
+@media (max-width: 1000px) {
+    .main {
+        margin: 2.5% 15% 12.5% 30%;
+        ;
+    }
+    .volunteer-table {
+        font-size: 9pt;
+        
+    }
+    
+}
 
 </style>
