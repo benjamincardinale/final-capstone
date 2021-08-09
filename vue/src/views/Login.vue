@@ -120,4 +120,11 @@ button {
     margin-bottom: 10%;
   }
 }
+@media (max-width: 700px){
+  
+  #login {
+    margin-top: 10%;
+    margin-bottom: 40%;
+  }
+}
 </style>

@@ -70,4 +70,9 @@ h2 span {
     margin: 2.5% 5% 10% 3%;
   }
 }  
+@media (max-width: 700px){
+  .left-box {
+    margin-left: 3.5em;
+  }
+}
 </style>

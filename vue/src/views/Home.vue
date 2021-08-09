@@ -16,5 +16,9 @@ export default {
 div h1 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
+@media (max-width: 700px) {
+  .home{
+    margin-left: 2em;
+  }
+}
 </style>

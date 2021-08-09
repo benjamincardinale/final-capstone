@@ -63,6 +63,10 @@ public class AuthenticationController {
         }
     }
 
+    public void changeUserPassword() {
+
+    }
+
     /**
      * Object to return as body in JWT Authentication.
      */

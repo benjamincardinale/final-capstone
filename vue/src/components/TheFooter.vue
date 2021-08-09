@@ -25,4 +25,9 @@ export default {};
 p {
   margin: 0;
 }
+@media (max-width: 700px){
+  .the-footer{
+    font-size: .85em;
+  }
+}
 </style>

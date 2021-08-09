@@ -19,16 +19,18 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: linear-gradient(90deg, rgba(233, 128, 116), rgba(233, 128, 116),rgba(255,203,154,.5)/*rgba(214, 126, 126, 0.479)*/);
+  background: linear-gradient(
+    90deg,
+    rgba(233, 128, 116),
+    rgba(233, 128, 116),
+    rgba(255, 203, 154, 0.5) /*rgba(214, 126, 126, 0.479)*/
+  );
   border-radius: 25px;
   padding-top: 15px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
   margin-top: -10px;
   max-height: 26vh;
-  
-  
-  
 }
 
 .header-text h1 {
@@ -58,18 +60,48 @@ h2 {
   .the-header {
     display: flex;
     align-items: center;
-    background: linear-gradient(90deg, rgba(233, 128, 116), rgba(233, 128, 116),rgba(255,203,154,.5)/*rgba(214, 126, 126, 0.479)*/);
+    background: linear-gradient(
+      90deg,
+      rgba(233, 128, 116),
+      rgba(233, 128, 116),
+      rgba(255, 203, 154, 0.5) /*rgba(214, 126, 126, 0.479)*/
+    );
     border-radius: 25px;
     text-align: center;
     max-height: 15vh;
-
   }
   .header-text h1 {
     font-size: 2em;
-    margin-top: .5vh;
+    margin-top: 0.5vh;
   }
   .header-text h2 {
     font-size: 1.5em;
+    padding: 1em;
+  }
+}
+@media (max-width: 700px) {
+  .the-header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+      90deg,
+      rgba(233, 128, 116),
+      rgba(233, 128, 116),
+      rgba(255, 203, 154, 0.5) /*rgba(214, 126, 126, 0.479)*/
+    );
+    border-radius: 25px;
+    text-align: center;
+    max-height: 15vh;
+    font-size: .75em;
+    margin-top: .5px;
+  }
+  .header-text h1 {
+    font-size: 2em;
+    padding-bottom: .5em;
+
+  }
+  .header-text h2 {
+    font-size: 1.25em;
     padding: 1em;
   }
 }
