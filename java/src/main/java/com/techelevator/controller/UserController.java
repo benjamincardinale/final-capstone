@@ -47,10 +47,9 @@ public class UserController {
         return jdbcVolunteerDao.getAllPendingVolunteers();
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(path = "/user/directory", method = RequestMethod.GET)
     public List<Volunteer> userDirectory() {
-        return null;
+        return jdbcVolunteerDao.getAllApprovedVolunteers();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
