@@ -64,8 +64,14 @@ public class PetController {
     }
     
     @RequestMapping(path = "/pet/update/{petId}", method = RequestMethod.PUT) //wew, come back to this one.
-    public void updatePet(@Valid @RequestBody Pet pet, @PathVariable long petId) {
+    public void updatePet(@Valid @RequestBody PetWithImage pet, @PathVariable long petId) {
         pet.setId(petId);
-        jdbcPetDao.updatePet(pet);
+        String url = null;
+        try {
+            url = addImage(pet.getImage());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        jdbcPetDao.updatePet(pet.getPet(url));
     }
 }
