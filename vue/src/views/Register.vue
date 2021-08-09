@@ -15,6 +15,7 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -24,6 +25,7 @@
         v-model="user.password"
         required
       />
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -32,10 +34,12 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <br>
+       <router-link :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
@@ -90,4 +94,13 @@ export default {
 };
 </script>
 
-<style></style>
+
+<style>
+@media (max-width: 700px){
+  .text-center{
+    margin-left: 4em;
+    margin-bottom: 17em;
+  }
+
+}
+</style>

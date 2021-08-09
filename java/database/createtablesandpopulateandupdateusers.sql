@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS pets (
 CREATE TABLE IF NOT EXISTS images (
         image_id serial PRIMARY KEY,
         pet_id INT NOT NULL,
-        url VARCHAR (64),
-        image_description VARCHAR (64), 
+        url VARCHAR (255),
+        image_description VARCHAR (255), 
         FOREIGN KEY (pet_id)
                 REFERENCES pets (pet_id)    
 );
@@ -117,16 +117,16 @@ COMMIT;
 BEGIN TRANSACTION;
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (3, 'BUSTER_01.jpg', 'Cute white fluffy bunny.');
+VALUES (1, 'https://i.ibb.co/mN7d67c/COOKIE-01.jpg', 'Golden brown short haired dog licking nose.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (1, 'COOKIE_01.jpg', 'Golden brown short haired dog licking nose.');
+VALUES (2, 'https://i.ibb.co/m4HJ0Zp/VINCENT-01.jpg', 'Young gray and black kitten.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (2, 'VINCENT_01.jpg', 'Young gray and black kitten.');
+VALUES (3, 'https://i.ibb.co/47hFxQ0/BUSTER-01.jpg', 'Cute white fluffy bunny.');
 
 INSERT INTO images (pet_id, url, image_description)
-VALUES (4, 'WAFFLES_01.jpg', 'Young chocolate lab.');
+VALUES (4, 'https://i.ibb.co/x5Gvb7L/WAFFLES-01.jpg', 'Young chocolate lab.');
 
 INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
 VALUES ('henry','johnson','hencutJohnson','hencutJohnson@gmail.com',false,false,0),
