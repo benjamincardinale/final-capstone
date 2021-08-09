@@ -1,18 +1,21 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: "https://api.imgbb.com/1/upload"
-})
-
 export default {
-    postImage(image) {
-        let config = {
+
+    addImage(image) {
+        /*return axios({
+            method: 'post',
+            url: '/image/upload',
+            data: image,
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'multipart/form-data'
-            },
-            body: image
-        }
-        return http.post('?key=cf122104a5dfbf471b70ae94aea0eacd', image, config)
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        })*/
+        const config = {headers: {'content-type': 'application/json'}};
+        
+        const payload = {'image': image};
+        return axios.post("/image/upload", payload, config);
+
+
     }
 }

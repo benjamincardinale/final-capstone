@@ -18,10 +18,10 @@
         <span>Anyone is welcome to view our current selection of furry friends by
           navigating to our home page. You can also submit an application to
           become a volunteer with us by selecting "Volunteer Registration" in the
-          navigation bar toward the top of the webpage. If you are a current user,
+          navigation bar on the left of the screen. If you are a current user,
           please select the "Login" option. Finally, if you are an authorized user
-          and wish to submit a pet for adoption, please select the corresponding
-          option in our navigation bar to get started!</span>
+          and wish to submit a pet for adoption, please select the button above
+          to get started!</span>
       </p>
     </div>
   </div>
