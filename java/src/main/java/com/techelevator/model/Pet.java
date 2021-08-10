@@ -18,10 +18,25 @@ public class Pet {
     private int age;
     private String imageUrl;
     private String imageDescription;
+    private boolean isAdopted;
 
     public Pet() {}
 
-    public Pet(long id, String name, String gender, String species, String description, int age, String url, String imageDescription) {
+    public Pet(long id, String name, String gender, String species, String description, int age,
+               String imageUrl, String imageDescription) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.species = species;
+        this.description = description;
+        this.age = age;
+        this.imageUrl = imageUrl;
+        this.imageDescription = imageDescription;
+        this.isAdopted = false;
+    }
+
+    public Pet(long id, String name, String gender, String species, String description, int age, String url,
+               String imageDescription, boolean isAdopted) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -30,6 +45,7 @@ public class Pet {
         this.age = age;
         this.imageUrl = url;
         this.imageDescription = imageDescription;
+        this.isAdopted = isAdopted;
     }
 
     public long getId() {
@@ -96,15 +112,12 @@ public class Pet {
         this.imageDescription = imageDescription;
     }
 
-    @Override
-    public String toString() {
-        return "Pet{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", species='" + species + '\'' +
-                ", description='" + description + '\'' +
-                ", age=" + age +
-                '}';
+    public boolean isAdopted() {
+        return isAdopted;
     }
+
+    public void setAdopted(boolean adopted) {
+        isAdopted = adopted;
+    }
+
 }

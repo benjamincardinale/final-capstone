@@ -20,8 +20,8 @@ public class JdbcPetDao implements PetDao{
 
     @Override
     public Pet getPetFromId(Long id) {
-        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, i.url, " +
-                "i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id " +
+        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, " +
+                "p.is_adopted, i.url, i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id " +
                 "WHERE p.pet_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if (result.next()) {
@@ -33,8 +33,8 @@ public class JdbcPetDao implements PetDao{
     @Override
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
-        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, i.url, " +
-                "i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id;";
+        String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, " +
+                "p.is_adopted, i.url, i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id;";
         SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
             allPets.add(mapRowToPet(result));
@@ -43,7 +43,7 @@ public class JdbcPetDao implements PetDao{
     }
 
     @Override
-    public Pet addPet(Pet pet) {
+    public Pet addPet(Pet pet) { //TODO in sql script, give is_adopted a default value of false
         String sql = "INSERT INTO pets (pet_name, age_in_months, gender, species, description) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING pet_id;";
         long newPetId = jdbcTemplate.queryForObject(sql, Long.class, pet.getName(), pet.getAge(), pet.getGender(),
@@ -56,11 +56,11 @@ public class JdbcPetDao implements PetDao{
 
     @Override
     public void updatePet(Pet pet) {
-        String sql = "UPDATE pets SET (pet_name, age_in_months, gender, species, description) " +
-                "= (?,?,?,?,?) " +
+        String sql = "UPDATE pets SET (pet_name, age_in_months, gender, species, description, is_adopted) " +
+                "= (?,?,?,?,?,?) " +
                 "WHERE pet_id = ?;";
         jdbcTemplate.update(sql, pet.getName(), pet.getAge(), pet.getGender(), pet.getSpecies(),
-                pet.getDescription(), pet.getId());
+                pet.getDescription(), pet.isAdopted(), pet.getId());
         sql = "UPDATE images SET (url, image_description) = (?,?) WHERE pet_id = ?"; //This one could be problematic, this is fine if there is only one image per pet, but when there are multiple, I will have to redo this query to be more selective about which image it's updating.
         jdbcTemplate.update(sql, pet.getImageUrl(), pet.getDescription(), pet.getId());
     }
@@ -75,6 +75,7 @@ public class JdbcPetDao implements PetDao{
             newPet.setAge(row.getInt("age_in_months"));
             newPet.setImageUrl(row.getString("url"));
             newPet.setImageDescription(row.getString("image_description"));
+            newPet.setAdopted(row.getBoolean("is_adopted"));
             return newPet;
     }
 }
