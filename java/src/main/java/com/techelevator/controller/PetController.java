@@ -32,6 +32,7 @@ public class PetController {
     @PreAuthorize("permitAll")
     @RequestMapping(path="/", method = RequestMethod.GET)
     public List<Pet> getAllPets(){
+
         return this.jdbcPetDao.getAllPets();
     }
 
