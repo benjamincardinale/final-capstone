@@ -65,7 +65,8 @@ public class JdbcUserDao implements UserDao {
     @Override
     public boolean validatePassword(String username, String passwordToValidate) {
         User userToValidate = findByUsername(username);
-        return userToValidate.getPassword().equals(new BCryptPasswordEncoder().encode(passwordToValidate));
+        String hashedPasswordToValidate = new BCryptPasswordEncoder().encode(passwordToValidate);
+        return userToValidate.getPassword().equals(hashedPasswordToValidate);
     }
 
     @Override
@@ -73,7 +74,6 @@ public class JdbcUserDao implements UserDao {
         if (!validatePassword(username, oldPassword)) {
             return false;
         }
-        User userToUpdate = findByUsername(username);
         String newPasswordHash = new BCryptPasswordEncoder().encode(newPassword);
         String sql = "UPDATE users SET password_hash = ? WHERE username = ?;";
         jdbcTemplate.update(sql, newPasswordHash, username);
