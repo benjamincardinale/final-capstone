@@ -20,7 +20,7 @@
             >Contact List</router-link
           >
         </li>
-        <br />
+        
         <br />
         <li>
           <router-link v-bind:to="{ name: 'logout' }">Logout</router-link>
@@ -66,11 +66,9 @@ ul li {
 .nav-panel a {
   text-decoration: none;
 }
-
 .nav-panel a:hover {
   text-decoration: underline;
 }
-
 
 @media (max-width: 1000px) {
   .nav-panel {

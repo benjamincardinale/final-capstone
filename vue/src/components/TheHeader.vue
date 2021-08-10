@@ -73,7 +73,7 @@ h2 {
   padding-bottom: -5%;
 }
 .current-user span {
-  color: rgb(173, 145, 19);
+  color: rgb(173, 149, 38);
 }
 
 @media (max-width: 1000px) {
