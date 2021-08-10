@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS pets (
         age_in_months INT NOT NULL,
         gender VARCHAR (1) NOT NULL,
         species VARCHAR (16) NOT NULL,
-        description VARCHAR (256) NOT NULL
+        description VARCHAR (256) NOT NULL,
+        is_adopted BOOLEAN NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS images (
@@ -80,6 +81,10 @@ CREATE TABLE IF NOT EXISTS adoption_information (
 
 ALTER TABLE volunteers
 ADD CONSTRAINT unique_username UNIQUE (username);
+
+ALTER TABLE pets
+ALTER COLUMN is_adopted
+SET DEFAULT false;
 
 ALTER TABLE users
 ADD COLUMN is_new_user BOOLEAN;

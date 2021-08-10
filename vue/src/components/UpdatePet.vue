@@ -29,7 +29,11 @@
         </form>
       </div>
     </div>
-
+    <div class="confetti button">
+      <form v-if="confettiActive">
+          <button v-on:click="stopConfetti">Stop Celebration</button>
+      </form>
+    </div>
     <div class="update-form" v-if="targetAnimal.id > 0">
       <form v-on:submit.prevent="submitForm">
         <label for="petName">Pet Name: </label>
@@ -99,7 +103,7 @@
           </button>
         </div>
       </form>
-      <div class="adopted-form" v-if="adopted == true" v-on:submit.prevent="adoptedAnimal">
+      <div class="adopted-form" v-if="adopted == true" v-on:submit.prevent="startConfetti">
         <form class="adoption">
           <label for="adopter">Name of Adopter: </label>
           <input
@@ -113,7 +117,7 @@
             type="date"
             id="adoption-date"
             name="adoption-date"
-            v-model="adoptionInfo.date"
+            v-model="adoptionInfo.adoptionDate"
           />
           <div class="adoption-btns">
             <button class="btn btn-submit">SUBMIT</button>
@@ -133,6 +137,9 @@
 
 <script>
 import animalService from "../services/AnimalService.js";
+import Vue from 'vue'
+import VueConfetti from 'vue-confetti';
+Vue.use(VueConfetti)
 
 export default {
   name: "update-pets",
@@ -150,9 +157,10 @@ export default {
       },
       adoptionInfo: {
         name: "",
-        date: "",
-        animalId: "",
+        adoptionDate: "",
+        petId: "",
       },
+      confettiActive: false,
       selectedFile: null,
       fileAsB64: null,
       
@@ -214,11 +222,13 @@ export default {
       });
     },
     adoptedAnimal() {
-      this.adoptionInfo.animalId = this.targetAnimal.id;
+      this.adoptionInfo.petId = this.targetAnimal.id;
       animalService.createAdoption(this.adoptionInfo)
       .then(response => {
         if(response.staus === 200) {
           alert('adoption successfully submited')
+          this.startConfetti();
+          
         }
       })
       .catch(error => {
@@ -252,11 +262,13 @@ export default {
       this.selectedFile = event.target.files[0];
       this.getBase64(this.selectedFile);
     },
-    submitAdoptionInfo() {
-      this.adoptionInfo.animalId = this.targetAnimal.id
-      //endpoint with adoptionInfo
-      //then
-      //catch
+    startConfetti() {
+      this.$confetti.start();
+      this.confettiActive = true;
+    },
+    stopConfetti() {
+      this.$confetti.stop();
+      this.confettiActive = false;
     }
   },
 };
