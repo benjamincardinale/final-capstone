@@ -15,9 +15,9 @@ export default {
    putDeclined(arrayOfIds) {
        return axios.put('/admin/decline', arrayOfIds)
    },
-   getApproved() {
-       return axios.get('/placeholder/endpoint')
-       //replace with actual endpoint once created
+   getDirectory() {
+       return axios.get('/user/directory')
+       
    }, 
     
 }

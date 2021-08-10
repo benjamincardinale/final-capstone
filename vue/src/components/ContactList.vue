@@ -19,12 +19,12 @@
                 </tr>
             </div>
             <div class="table-data">
-            <!--<tr v-for="item in $store.state.volunteers" :key="item.id">
+                <tr v-for="item in $store.state.volunteers" :key="item.id">
                     <td>{{item.firstName}}</td>
                     <td>{{item.lastName}}</td>
-                    <td>{{item.role}}</td>
+                    <td>{{item.username}}
                     <td>{{item.emailAddress}}</td>
-                </tr> -->
+                </tr> 
             </div>
 
 
@@ -34,27 +34,27 @@
 </template>
 
 <script>
-//import volunteerService from '../services/VolunteerService.js'
+import volunteerService from '../services/VolunteerService.js'
 export default {
     name: "contact-list",
     data() {
         return {
 
         };
-    },/*
+    },
     created() {
         this.retrieveVolunteers();
     },
     methods: {
         retrieveVolunteers() {
-            volunteerService.getApproved().then(response => {
+            volunteerService.getDirectory().then(response => {
                 this.$store.commit("SET_VOLUNTEERS", response.data);
             })
             .catch(error => {
                 alert("Error: " + error.message)
             })
         },
-    }*/
+    }
 
 }
 </script>
