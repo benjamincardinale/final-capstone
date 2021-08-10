@@ -68,7 +68,6 @@ ul li {
 }
 
 .nav-panel a:hover {
-  font-weight: bold;
   text-decoration: underline;
 }
 
