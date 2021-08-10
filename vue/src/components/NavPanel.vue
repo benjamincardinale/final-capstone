@@ -1,16 +1,31 @@
 <template>
   <div class="nav-panel">
-    <div >
+    <div>
       <ul class="nav-links">
-      <li><router-link v-bind:to="{ name: 'home' }" >Home</router-link></li><br>
-      <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li><br>
-      <li><router-link id="volunteer-registration" v-bind:to="{ name: 'apply' }" v-if="$store.state.role == ''"
-        >Volunteers Register Here</router-link>
-        <router-link id="contact-list" v-else v-bind:to="{name: 'contact-list-view'}" >Contact List</router-link>
-      </li><br>
-      <br><li><router-link v-bind:to="{ name: 'logout' }">Logout</router-link
-      ></li>
-      <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
+        <li><router-link v-bind:to="{ name: 'home' }"><span class="linktext">Home</span></router-link></li>
+        <br />
+        <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li>
+        <br />
+        <li>
+          <router-link
+            id="volunteer-registration"
+            v-bind:to="{ name: 'apply' }"
+            v-if="$store.state.role == ''"
+            >Volunteers Register Here</router-link
+          >
+          <router-link
+            id="contact-list"
+            v-else
+            v-bind:to="{ name: 'contact-list-view' }"
+            >Contact List</router-link
+          >
+        </li>
+        <br />
+        <br />
+        <li>
+          <router-link v-bind:to="{ name: 'logout' }">Logout</router-link>
+        </li>
+        <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
       </ul>
     </div>
     <!-- volunteer link-->
@@ -33,7 +48,6 @@ export default {
   background: rgb(233, 128, 116);
   padding: 10px;
   margin: 5px;
-
 }
 .nav-panel {
   display: flex;
@@ -42,13 +56,23 @@ export default {
   width: 14vw;
   margin: 5vh 0 5vh 5px;
 }
-ul li{
+ul li {
   list-style-type: none;
   height: 10vh;
 }
 .router-link-exact-active {
   color: white;
 }
+.nav-panel a {
+  text-decoration: none;
+}
+
+.nav-panel a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
 @media (max-width: 1000px) {
   .nav-panel {
     display: flex;
@@ -68,7 +92,7 @@ ul li{
     margin: 7.5% 0 0 -3%;
   }
   .nav-links {
-    font-size: .75em;
+    font-size: 0.75em;
   }
 }
 </style>
