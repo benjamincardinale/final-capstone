@@ -1,5 +1,7 @@
 <template>
   <div class="main">
+    <img src="../assets/CatsNDogs.png"
+           alt="Picture of Cats and Dogs" />
     <div class="top-box">
       <h2 class="title1"><span>Overview</span></h2>
       <p class="body1">
@@ -83,6 +85,16 @@ p {
 h2 span {
   background: rgba(241, 138, 41, 0.219);
   font-size: 0.85em;
+}
+
+img {
+  height: 30%;
+  width: 50%;
+  margin: 5% 4% 1% 18%;
+  align-self: center;
+  border: 10px double;
+  border-radius: 2%;
+  flex-grow: 1;
 }
 @media (max-width: 1000px) {
   .top-box {
