@@ -87,9 +87,10 @@ img {
   align-self: center;
   max-width: 50%;
   height: auto;
-  padding: 20px;
-  border: 2px solid black;
-  border-radius: 30px;
+  padding: 10px;
+  border: 2px double black;
+  border-radius: 20px;
+  background-color: hsla(0, 20%, 96%, 0.75);
 
 }
 @media (max-width: 1000px) {
