@@ -2,10 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.Application;
 import com.techelevator.dao.JdbcPetDao;
-import com.techelevator.model.Image;
-import com.techelevator.model.ImageDto;
-import com.techelevator.model.Pet;
-import com.techelevator.model.PetWithImage;
+import com.techelevator.model.*;
 import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.LinkedMultiValueMap;
@@ -76,4 +73,14 @@ public class PetController {
         }
         jdbcPetDao.updatePet(pet);
     }
+
+    /*
+    @RequestMapping(path = "/pet/update/adopter", method = RequestMethod.PUT)
+    public void adoptedPet(@Valid @RequestBody Adopter adopter) {
+        Pet pet = jdbcPetDao.getPetFromId(adopter.getPetId());
+        pet.
+        jdbcPetDao.updatePet();
+    }
+    */
+
 }
