@@ -215,15 +215,21 @@ export default {
     },
     adoptedAnimal() {
       this.adoptionInfo.animalId = this.targetAnimal.id;
-      //add adoption post here and in animalService
-      //then success
-      //catch error
+      animalService.createAdoption(this.adoptionInfo)
+      .then(response => {
+        if(response.staus === 200) {
+          alert('adoption successfully submited')
+        }
+      })
+      .catch(error => {
+        alert('Error: ' + error.message)
+      })
     },
     resetAdoptionForm() {
       this.adoptionInfo = {
         name: "",
         date: "",
-        animalId: this.targetAnimal.id,
+        animalId: "",
       };
       this.adopted = false;
     },
