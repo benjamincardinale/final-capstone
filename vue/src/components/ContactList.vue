@@ -1,20 +1,21 @@
 <template>
   <div class="main">
-      <div class="table=contact">
+      <h1>Volunteer Directory</h1>
+      <div class="table-contact">
         <table class= "contact-list">
             <div class="table-head">
                 <tr>
                     <th>
-                        First Name
+                       First Name
                     </th>
                     <th>
-                        Last Name
+                        Last Name 
                     </th>
                     <th>
-                        Role
+                        Role 
                     </th>
                     <th>
-                        Contact Information
+                        Contact Information 
                     </th>
                 </tr>
             </div>
@@ -59,6 +60,42 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14pt;
+}
+.contact-list {
+    border-collapse: collapse;
+    height: 25px;
+    table-layout: auto;
+    width: 100%;
+    text-align: center;
+    margin: 2.5vh 0 5vh 0;
+}
+.contact-list th {
+    border: 1px solid black;
+    width: 200px;
+    padding: 10px;
+}
+.contact-list th:last-child {
+    width: 232px;
+}
+.contact-list td {
+    padding: 10px;
+    border: 1px solid black;
+    width: 200px;
+    text-align: left;
+}
+@media (max-width: 1300px) {
+    .contact-list {
+        margin-left: 8vw;
+    }
+}
 
 </style>

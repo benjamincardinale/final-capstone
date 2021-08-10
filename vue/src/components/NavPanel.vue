@@ -8,7 +8,7 @@
         >Volunteers Register Here</router-link>
         <router-link id="contact-list" v-else v-bind:to="{name: 'contact-list-view'}" >Contact List</router-link>
       </li><br>
-      <li><router-link v-bind:to="{ name: 'logout' }">Logout</router-link
+      <br><li><router-link v-bind:to="{ name: 'logout' }">Logout</router-link
       ></li>
       <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
       </ul>
