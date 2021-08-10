@@ -20,7 +20,7 @@ export default {};
   text-align: center;
   font-weight: 800;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  
+  margin-top: 10%;
 }
 p {
   margin: 0;

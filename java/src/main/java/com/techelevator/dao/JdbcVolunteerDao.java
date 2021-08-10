@@ -21,7 +21,11 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public List<Volunteer> getAllApprovedVolunteers() {
         List<Volunteer> approvedVolunteers = new ArrayList<>();
-        String sql = "SELECT v.* FROM volunteers v JOIN users u ON v.username = u.username;";
+        String sql = "SELECT v.volunteer_id, v.first_name, v.last_name, v.username, v.email_address, v.has_adopted_before, " +
+                "v.has_any_certifications, v.approval_status_id, a.approval_status_description " +
+                "FROM volunteers v " +
+                "JOIN users u ON v.username = u.username " +
+                "JOIN approval_statuses a ON v.approval_status_id = a.approval_status_id;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while (result.next()) {
             approvedVolunteers.add(mapRowToVolunteer(result));

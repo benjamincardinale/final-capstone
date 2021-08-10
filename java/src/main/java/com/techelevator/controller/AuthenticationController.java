@@ -2,9 +2,11 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -14,12 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
+
+import java.security.Principal;
 
 @RestController
 @CrossOrigin
@@ -63,7 +63,10 @@ public class AuthenticationController {
         }
     }
 
-    public void changeUserPassword() {
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/user/change_password", method = RequestMethod.PUT)
+    public void changeUserPassword(@Valid @RequestBody ChangePasswordDTO editUser, Principal principal) {
+        userDao.updatePassword(principal.getName(), editUser.getNewPassword());
 
     }
 

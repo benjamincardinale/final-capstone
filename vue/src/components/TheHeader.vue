@@ -5,6 +5,12 @@
       <h1>Second Chances</h1>
       <h2>Pet Placement Agency</h2>
     </header>
+    <div class="current-user">
+      <p  v-if="$store.state.role">
+        You are signed in as: <br />
+        <span>{{ $store.state.user.username }}</span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -37,23 +43,37 @@ export default {
   margin-top: -20px;
   margin-bottom: -40px;
   text-decoration: underline;
-  font-size: 10vh;
+  font-size: 8vh;
   padding-left: 15px;
 }
 h2 {
   padding-top: 10px;
-  font-size: 5vh;
+  font-size: 4vh;
   margin-bottom: 10px;
+  margin-left: 10px;
+  white-space: nowrap;
 }
 .header-logo {
-  max-height: 15vh;
-  max-width: 10vw;
+  max-height: 17vh;
+  max-width: 8vw;
   flex-grow: 1;
-  margin-left: 20vw;
+  margin-left: 10vw;
+  margin-bottom: 2vw;
 }
 .header-text {
-  flex-grow: 2;
+  flex-grow: 1.5;
   padding-right: 30vw;
+}
+.current-user {
+  font-size: 2vh;
+  color: rgb(66, 66, 61);
+  text-transform: uppercase;
+  margin-left: -30%;
+  padding-right: 10%;
+  padding-bottom: -5%;
+}
+.current-user span {
+  color: rgb(173, 145, 19);
 }
 
 @media (max-width: 1000px) {
@@ -69,14 +89,21 @@ h2 {
     border-radius: 25px;
     text-align: center;
     max-height: 15vh;
+    
+    
   }
   .header-text h1 {
-    font-size: 2em;
+    font-size: 3em;
     margin-top: 0.5vh;
+    margin-left: 10%;
   }
   .header-text h2 {
     font-size: 1.5em;
     padding: 1em;
+    margin-left: 10%;
+  }
+  .current-user {
+    font-size: 1em;
   }
 }
 @media (max-width: 700px) {
@@ -92,17 +119,19 @@ h2 {
     border-radius: 25px;
     text-align: center;
     max-height: 15vh;
-    font-size: .75em;
-    margin-top: .5px;
+    font-size: 0.8em;
+    margin-top: 0.5px;
   }
   .header-text h1 {
-    font-size: 2em;
-    padding-bottom: .5em;
-
+    font-size: 3em;
+    padding-bottom: 0.5em;
   }
   .header-text h2 {
     font-size: 1.25em;
     padding: 1em;
+  }
+  .current-user {
+    font-size: .8em;;
   }
 }
 </style>

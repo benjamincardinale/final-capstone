@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS images CASCADE;
 DROP TABLE IF EXISTS pets CASCADE;
 DROP TABLE IF EXISTS volunteers CASCADE;
 DROP TABLE IF EXISTS approval_statuses CASCADE;
+DROP TABLE IF EXISTS adoption_information CASCADE;
 ALTER TABLE users DROP COLUMN IF EXISTS is_new_user;
 
 BEGIN TRANSACTION;
@@ -39,7 +40,8 @@ CREATE TABLE IF NOT EXISTS pets (
         age_in_months INT NOT NULL,
         gender VARCHAR (1) NOT NULL,
         species VARCHAR (16) NOT NULL,
-        description VARCHAR (256) NOT NULL
+        description VARCHAR (256) NOT NULL,
+        is_adopted BOOLEAN NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS images (
@@ -68,9 +70,21 @@ CREATE TABLE IF NOT EXISTS volunteers (
         FOREIGN KEY (approval_status_id)
                 REFERENCES approval_statuses (approval_status_id)
 );
+CREATE TABLE IF NOT EXISTS adoption_information (
+        adoption_id serial PRIMARY KEY,
+        pet_id INT NOT NULL,
+        adopter_name VARCHAR (64) NOT NULL,
+        adoption_date VARCHAR (24) NOT NULL,
+        FOREIGN KEY (pet_id)
+                REFERENCES pets (pet_id)
+);
 
 ALTER TABLE volunteers
 ADD CONSTRAINT unique_username UNIQUE (username);
+
+ALTER TABLE pets
+ALTER COLUMN is_adopted
+SET DEFAULT false;
 
 ALTER TABLE users
 ADD COLUMN is_new_user BOOLEAN;

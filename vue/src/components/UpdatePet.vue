@@ -1,13 +1,25 @@
 <template>
   <div class="update">
-    <div class="id-section">
+
+    <div class="first-choice">
+        <p>Would you like to update a Pet's information, or mark a pet as adopted?</p>
+        <form>
+          <input type="radio" id="info-change" name="first-choice" value="true" v-model="infoChange">
+          <label for="info-change"> Change Info </label>
+          <input type="radio" id="mark-adopted" name="first-choice" value="true" v-model="markAdopted">
+          <label for="mark-adopted"> Mark Adopted </label>
+
+        </form>
+      </div>
+
+    <div class="id-section" v-if="markAdopted || infoChange">
       <div class="table-of-pets">
         <table>
           <tr>
             <th>Pet ID</th>
             <th>Name</th>
           </tr>
-          <tr v-for="item in $store.state.animalCards" v-bind:key="item.id">
+          <tr v-for="item in filteredAnimalsByAdoption" v-bind:key="item.id">
             <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
           </tr>
@@ -29,8 +41,12 @@
         </form>
       </div>
     </div>
-
-    <div class="update-form" v-if="targetAnimal.id > 0">
+    <div class="confetti button">
+      <form v-if="confettiActive">
+          <button v-on:click="stopConfetti">Stop Celebration</button>
+      </form>
+    </div>
+    <div class="update-form" v-if="targetAnimal.id > 0 && infoChange">
       <form v-on:submit.prevent="submitForm">
         <label for="petName">Pet Name: </label>
         <input
@@ -58,13 +74,7 @@
           />
           <label for="gender-f"> F</label>
           <br />
-          <label for="adopted">Adopted?</label>
-          <input
-            type="checkbox"
-            id="adopted"
-            name="adopted"
-            v-model="adopted"
-          />
+          
         </div>
         <label for="age">Pet's age in months: </label>
         <input type="number" id="age" name="age" v-model="targetAnimal.age" />
@@ -99,7 +109,8 @@
           </button>
         </div>
       </form>
-      <div class="adopted-form" v-if="adopted == true">
+    </div>
+    <div class="adopted-form" v-if="targetAnimal.id > 0 && markAdopted" v-on:submit.prevent="adoptedAnimal">
         <form class="adoption">
           <label for="adopter">Name of Adopter: </label>
           <input
@@ -113,7 +124,7 @@
             type="date"
             id="adoption-date"
             name="adoption-date"
-            v-model="adoptionInfo.date"
+            v-model="adoptionInfo.adoptionDate"
           />
           <div class="adoption-btns">
             <button class="btn btn-submit">SUBMIT</button>
@@ -127,36 +138,52 @@
           </div>
         </form>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 import animalService from "../services/AnimalService.js";
+import Vue from 'vue'
+import VueConfetti from 'vue-confetti';
+Vue.use(VueConfetti)
 
 export default {
   name: "update-pets",
   data() {
     return {
-      adopted: false,
       targetAnimal: {
         id: "",
         name: "",
         gender: "",
         age: "",
-        type: "",
+        species: "",
         description: "",
         imageUrl: "",
+
       },
       adoptionInfo: {
         name: "",
-        date: "",
-        animalId: "",
+        adoptionDate: "",
+        petId: "",
       },
+      confettiActive: false,
       selectedFile: null,
       fileAsB64: null,
       
+      markAdopted: false,
+      infoChange: false,
+
     };
+  },
+  computed: {
+    filteredAnimalsByAdoption () {
+      let filteredArray = this.$store.state.animalCards.filter((item) => {
+        if(!item.adopted) {
+          return true
+        }
+      })
+      return filteredArray;
+    }
   },
   methods: {
     setTargetAnimalById() {
@@ -172,6 +199,7 @@ export default {
       this.targetAnimal.species = animal.species;
       this.targetAnimal.description = animal.description;
       this.targetAnimal.imageUrl = animal.imageUrl;
+      
     },
     resetIdForm() {
       this.targetAnimal = {
@@ -181,8 +209,10 @@ export default {
         age: "",
         type: "",
         description: "",
-        imageUrl: this.fileAsB64,
+        imageUrl: this.fileAsB64,        
       };
+      this.markAdopted = false;
+      this.infoChange = false;
     },
     submitForm() {
       const animalToadd = {
@@ -197,15 +227,18 @@ export default {
         .updateListing(animalToadd, this.targetAnimal.id)
         .then((response) => {
           if (response.status === 200) {
-            alert("Submission successful");
             this.resetIdForm();
-            this.retrieveAnimals();
+            this.resetAdoptionForm();
+            alert("Submission successful");
+            
           }
         })
         .catch((error) => {
-          alert("Error: try again: " + error.message);
           this.resetIdForm();
-          this.retrieveAnimals();
+          this.resetAdoptionForm();
+          alert("Error: try again: " + error.message);
+          
+          
         });
     },
     retrieveAnimals() {
@@ -214,18 +247,29 @@ export default {
       });
     },
     adoptedAnimal() {
-      this.adoptionInfo.animalId = this.targetAnimal.id;
-      //add adoption post here and in animalService
-      //then success
-      //catch error
+      this.adoptionInfo.petId = this.targetAnimal.id;
+      animalService.createAdoption(this.adoptionInfo)
+      .then(response => {
+        if(response.status === 200) {
+          this.resetAdoptionForm();
+          this.resetIdForm();
+          alert('adoption successfully submited')
+          this.startConfetti();
+          
+        }
+      })
+      .catch(error => {
+        this.resetAdoptionForm();
+        this.resetIdForm();
+        alert('Error: ' + error.message)
+      })
     },
     resetAdoptionForm() {
       this.adoptionInfo = {
         name: "",
         date: "",
-        animalId: this.targetAnimal.id,
+        animalId: "",
       };
-      this.adopted = false;
     },
     getBase64(file) {
       let self = this;
@@ -239,13 +283,22 @@ export default {
         );
       };
       reader.onerror = function (error) {
-        console.log("Error: ", error);
+        console.log("Error: "+ error.message);
       };
     },
     onFileChanged(event) {
       this.selectedFile = event.target.files[0];
       this.getBase64(this.selectedFile);
     },
+    startConfetti() {
+      this.$confetti.start();
+      this.confettiActive = true;
+    },
+    stopConfetti() {
+      this.$confetti.stop();
+      this.confettiActive = false;
+      this.$router.push('/');
+    }
   },
 };
 </script>
@@ -323,5 +376,24 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+.adopted-form {
+  display: flex;
+  align-items: center;
+  background-color: rgba(250, 201, 154, 0.479);
+  border: 3px solid rgba(248, 203, 4, 0.753);
+  text-align: center;
+  margin: 5% 35% 5% 35%;  
+}
+.adopted-form form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.adopted-form button {
+  margin-top: 2vh;
+}
+.first-choice {
+  margin: 2.5% 0 5% 0;
 }
 </style>
