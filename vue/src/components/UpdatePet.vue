@@ -99,7 +99,7 @@
           </button>
         </div>
       </form>
-      <div class="adopted-form" v-if="adopted == true">
+      <div class="adopted-form" v-if="adopted == true" v-on:submit.prevent="adoptedAnimal">
         <form class="adoption">
           <label for="adopter">Name of Adopter: </label>
           <input
@@ -246,6 +246,12 @@ export default {
       this.selectedFile = event.target.files[0];
       this.getBase64(this.selectedFile);
     },
+    submitAdoptionInfo() {
+      this.adoptionInfo.animalId = this.targetAnimal.id
+      //endpoint with adoptionInfo
+      //then
+      //catch
+    }
   },
 };
 </script>
