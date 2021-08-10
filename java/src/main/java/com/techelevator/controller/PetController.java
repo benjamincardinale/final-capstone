@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.Application;
+import com.techelevator.dao.JdbcAdopterDao;
 import com.techelevator.dao.JdbcPetDao;
 import com.techelevator.model.*;
 import org.springframework.http.*;
@@ -19,10 +20,12 @@ import java.util.List;
 public class PetController {
 
     private JdbcPetDao jdbcPetDao;
+    private JdbcAdopterDao jdbcAdopterDao;
     private RestTemplate restTemplate = new RestTemplate();
 
-    public PetController(JdbcPetDao jdbcPetDao) {
+    public PetController(JdbcPetDao jdbcPetDao, JdbcAdopterDao jdbcAdopterDao) {
         this.jdbcPetDao = jdbcPetDao;
+        this.jdbcAdopterDao = jdbcAdopterDao;
 
     }
 
@@ -74,13 +77,13 @@ public class PetController {
         jdbcPetDao.updatePet(pet);
     }
 
-    /*
     @RequestMapping(path = "/pet/update/adopter", method = RequestMethod.PUT)
     public void adoptedPet(@Valid @RequestBody Adopter adopter) {
         Pet pet = jdbcPetDao.getPetFromId(adopter.getPetId());
-        pet.
-        jdbcPetDao.updatePet();
+        pet.setAdopted(true);
+        jdbcPetDao.updatePet(pet);
+        jdbcAdopterDao.insertAdopter(adopter);
     }
-    */
+
 
 }
