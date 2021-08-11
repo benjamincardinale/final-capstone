@@ -92,6 +92,9 @@ export default {
     width: 200px;
     text-align: left;
 }
+.contact-list td:last-child {
+    width: 232px;
+}
 @media (max-width: 1300px) {
     .contact-list {
         margin-left: 8vw;
