@@ -1,7 +1,7 @@
 <template>
   <div class="update">
 
-    <div class="first-choice">
+    <div class="first-choice" v-if="!confettiActive">
         <p>Would you like to update a Pet's information, or mark a pet as adopted?</p>
         <form>
           <input type="radio" id="info-change" name="first-choice" value="true" v-model="infoChange">
@@ -12,7 +12,7 @@
         </form>
       </div>
 
-    <div class="id-section" v-if="markAdopted || infoChange">
+    <div class="id-section" v-if="markAdopted && !confettiActive|| infoChange ">
       <div class="table-of-pets">
         <table>
           <tr>
@@ -41,10 +41,10 @@
         </form>
       </div>
     </div>
-    <div class="confetti button">
-      <form v-if="confettiActive">
-          <button v-on:click="stopConfetti">Stop Celebration</button>
-      </form>
+    <div class="confetti-text" v-if="confettiActive">
+      <p>Congratulations {{targetAnimal.name}}</p>
+      <p>We hope you love your new home!</p>
+      
     </div>
     <div class="update-form" v-if="targetAnimal.id > 0 && infoChange">
       <form v-on:submit.prevent="submitForm">
@@ -110,7 +110,7 @@
         </div>
       </form>
     </div>
-    <div class="adopted-form" v-if="targetAnimal.id > 0 && markAdopted" v-on:submit.prevent="adoptedAnimal">
+    <div class="adopted-form" v-if="targetAnimal.id > 0 && markAdopted && !confettiActive" v-on:submit.prevent="adoptedAnimal">
         <form class="adoption">
           <label for="adopter">Name of Adopter: </label>
           <input
@@ -251,10 +251,10 @@ export default {
       animalService.createAdoption(this.adoptionInfo)
       .then(response => {
         if(response.status === 200) {
-          this.resetAdoptionForm();
-          this.resetIdForm();
+          
           alert('adoption successfully submited')
           this.startConfetti();
+          setTimeout(this.stopConfetti, 5000);
           
         }
       })
@@ -296,8 +296,13 @@ export default {
     },
     stopConfetti() {
       this.$confetti.stop();
-      this.confettiActive = false;
+      this.resetAdoptionForm()
+      this.resetIdForm();
+      this.confettiActive = false
       this.$router.push('/');
+    },
+    routeHome() {
+      this.$router.push('/')
     }
   },
 };
@@ -395,5 +400,13 @@ export default {
 }
 .first-choice {
   margin: 2.5% 0 5% 0;
+}
+.confetti-text {
+  text-align: center;
+  margin: 10vh 0 10vh 0;
+  color: rgb(233, 128, 116);
+}
+.confetti-text p {
+  font-size: 36pt;
 }
 </style>
