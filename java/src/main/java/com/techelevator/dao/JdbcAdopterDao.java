@@ -6,17 +6,17 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JdbcAdopterDao implements AdopterDao{
+public class JdbcAdopterDao implements AdopterDao {
     private JdbcTemplate jdbcTemplate;
 
-     public JdbcAdopterDao (JdbcTemplate jdbcTemplate) {
-         this.jdbcTemplate = jdbcTemplate;
-     }
+    public JdbcAdopterDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public Adopter getAdopterById(long id) {
-         String sql = "SELECT adoption_id, pet_id,adopter_name,adoption_date " +
-                 "FROM adoption_information WHERE adoption_id = ?;";
+        String sql = "SELECT adoption_id, pet_id,adopter_name,adoption_date " +
+                "FROM adoption_information WHERE adoption_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if (result.next()) {
             return mapRowToAdopter(result);
@@ -34,11 +34,11 @@ public class JdbcAdopterDao implements AdopterDao{
     }
 
     private Adopter mapRowToAdopter(SqlRowSet row) {
-         Adopter newAdopter = new Adopter();
-         newAdopter.setAdopterId(row.getLong("adoption_id"));
-         newAdopter.setPetId(row.getLong("pet_id"));
-         newAdopter.setName(row.getString("adopter_name"));
-         newAdopter.setAdoptionDate(row.getString("adoption_date")); //TODO fix dates or something idk
-         return newAdopter;
+        Adopter newAdopter = new Adopter();
+        newAdopter.setAdopterId(row.getLong("adoption_id"));
+        newAdopter.setPetId(row.getLong("pet_id"));
+        newAdopter.setName(row.getString("adopter_name"));
+        newAdopter.setAdoptionDate(row.getString("adoption_date")); //TODO fix dates or something idk
+        return newAdopter;
     }
 }
