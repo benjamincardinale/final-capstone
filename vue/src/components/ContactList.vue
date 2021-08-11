@@ -84,7 +84,7 @@ export default {
     padding: 10px;
 }
 .contact-list th:last-child {
-    width: 232px;
+    width: 237px;
 }
 .contact-list td {
     padding: 10px;
@@ -93,7 +93,7 @@ export default {
     text-align: left;
 }
 .contact-list td:last-child {
-    width: 232px;
+    width: 228px;
 }
 @media (max-width: 1300px) {
     .contact-list {
