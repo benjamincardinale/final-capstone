@@ -7,8 +7,10 @@
     </header>
     <div class="current-user">
       <p  v-if="$store.state.role">
-        You are <br /> signed in as: <br />
+        You are <br /> logged in as: <br />
         <span>{{ $store.state.user.username }}</span>
+        <br />
+        <router-link class="logout" v-bind:to="{ name: 'logout' }">Log out</router-link>
       </p>
     </div>
   </div>
@@ -76,6 +78,9 @@ h2 {
 }
 .current-user span {
   color: rgb(173, 149, 38);
+}
+.logout {
+  font-size: 1.5vh;
 }
 
 @media (max-width: 1000px) {
