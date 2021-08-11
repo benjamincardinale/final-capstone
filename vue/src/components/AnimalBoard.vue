@@ -127,6 +127,14 @@ img {
     margin: 2.5% 15% 0% 20%;
     font-size: 0.75em;
   }
+  .adopted {
+    margin: 0 47vw -10vh 0;
+  }
+}
+@media (max-width: 800px) {
+  .adopted {
+    margin: 0 48vw -8vh 0
+  }
 }
 @media (max-width: 600px) {
   .cards {
@@ -135,6 +143,9 @@ img {
     font-size: 0.5em;
     margin-left: 10em;
   }
+  .adopted {
+    margin: 0 47vw -8vh 0;
+  }
 }
 @media (max-width: 300px) {
   .cards {
@@ -142,6 +153,11 @@ img {
     justify-content: space-between;
     font-size: 0.5em;
     margin-left: 10em;
+  }
+}
+@media (max-width: 1400px) {
+  .adopted {
+    margin: 0 48vw -20vh 0;
   }
 }
 </style>
