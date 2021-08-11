@@ -7,7 +7,7 @@
     </header>
     <div class="current-user">
       <p  v-if="$store.state.role">
-        You are signed in as: <br />
+        You are <br /> signed in as: <br />
         <span>{{ $store.state.user.username }}</span>
       </p>
     </div>
@@ -43,8 +43,8 @@ export default {
   margin-top: -20px;
   margin-bottom: -40px;
   text-decoration: underline;
-  font-size: 4em;
-  padding-left: 15px;
+  font-size: 8vh;
+  padding-left: -30px;
 }
 h2 {
   padding-top: 15px;
@@ -57,20 +57,21 @@ h2 {
   max-height: 17vh;
   max-width: 8vw;
   flex-grow: 1;
-  margin-left: 10vw;
+  margin-left: 4vw;
   margin-bottom: 2vw;
+  margin-right: -2%;
 }
 .header-text {
   flex-grow: 1.5;
-  padding-right: 30vw;
+  padding-right: 33vw;
 }
 .current-user {
   font-size: 2vh;
   color: rgb(66, 66, 61);
   text-transform: uppercase;
-  margin-left: -30%;
-  padding-right: 10%;
-  padding-bottom: -5%;
+  margin-left: -35%;
+  padding-right: 3%;
+  padding-bottom: 1%;
 }
 .current-user span {
   color: rgb(173, 149, 38);
