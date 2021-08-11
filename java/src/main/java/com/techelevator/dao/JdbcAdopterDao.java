@@ -27,7 +27,7 @@ public class JdbcAdopterDao implements AdopterDao{
     @Override
     public Adopter insertAdopter(Adopter adopter) {
         String sql = "INSERT INTO adoption_information (pet_id, adopter_name, adoption_date) " +
-                "VALUES (?,?,?) RETURNING pet_id;";
+                "VALUES (?,?,?) RETURNING adoption_id;";
         long newId = jdbcTemplate.queryForObject(sql, Long.class, adopter.getPetId(), adopter.getName(),
                 adopter.getAdoptionDate());
         return getAdopterById(newId);
@@ -35,10 +35,10 @@ public class JdbcAdopterDao implements AdopterDao{
 
     private Adopter mapRowToAdopter(SqlRowSet row) {
          Adopter newAdopter = new Adopter();
-         newAdopter.setAdopterId(row.getLong("adopter_id"));
+         newAdopter.setAdopterId(row.getLong("adoption_id"));
          newAdopter.setPetId(row.getLong("pet_id"));
          newAdopter.setName(row.getString("adopter_name"));
-         newAdopter.setAdoptionDate(row.getDate("adoption_date").toString()); //TODO fix dates or something idk
+         newAdopter.setAdoptionDate(row.getString("adoption_date")); //TODO fix dates or something idk
          return newAdopter;
     }
 }

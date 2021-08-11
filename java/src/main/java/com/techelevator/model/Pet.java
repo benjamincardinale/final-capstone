@@ -22,18 +22,18 @@ public class Pet {
 
     public Pet() {}
 
-    public Pet(long id, String name, String gender, String species, String description, int age,
-               String imageUrl, String imageDescription) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.species = species;
-        this.description = description;
-        this.age = age;
-        this.imageUrl = imageUrl;
-        this.imageDescription = imageDescription;
-        this.isAdopted = false;
-    }
+//    public Pet(long id, String name, String gender, String species, String description, int age,
+//               String imageUrl, String imageDescription) {
+//        this.id = id;
+//        this.name = name;
+//        this.gender = gender;
+//        this.species = species;
+//        this.description = description;
+//        this.age = age;
+//        this.imageUrl = imageUrl;
+//        this.imageDescription = imageDescription;
+//        this.isAdopted = false;
+//    }
 
     public Pet(long id, String name, String gender, String species, String description, int age, String url,
                String imageDescription, boolean isAdopted) {
