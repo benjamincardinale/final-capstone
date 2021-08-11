@@ -126,7 +126,7 @@ INSERT INTO pets (pet_name, age_in_months, gender, species, description)
 VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Gonzo', 22, 'M', 'dog', 'Gonzo is a loyal spirit; a young Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
+VALUES ('Gonzo', 130, 'M', 'dog', 'Gonzo is a loyal spirit; a young Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
 
 COMMIT;
 
