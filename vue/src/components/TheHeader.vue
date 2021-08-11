@@ -59,6 +59,7 @@ h2 {
   flex-grow: 1;
   margin-left: 4vw;
   margin-bottom: 2vw;
+  margin-right: -2%;
 }
 .header-text {
   flex-grow: 1.5;
