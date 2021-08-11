@@ -52,6 +52,7 @@ export default {
     text-decoration: none;
     background-color: rgba(241,138,41,0.479);
     color: black;
+    border-radius: 20px;
     
 }
 .add:hover {
@@ -65,6 +66,7 @@ export default {
     text-decoration: none;
     background-color: rgba(241,138,41,0.479);
     color: black;
+    border-radius: 20px;
 }
 
 .update:hover {
@@ -78,6 +80,7 @@ export default {
     text-decoration: none;
     background-color: rgba(241,138,41,0.479);
     color: black;
+    border-radius: 20px;
 }
 .admin:hover {
     text-decoration: underline;
