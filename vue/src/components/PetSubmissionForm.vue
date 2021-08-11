@@ -146,15 +146,6 @@ export default {
       this.getBase64(this.selectedFile);
     },
     onUpload() {
-      /*const formData = new FormData();
-      formData.append("myFile", this.selectedFile);
-      console.log(formData);
-      axios.post("http://localhost:8080/image/upload", this.selectedFile {'Content-Type': 'multipart/form-data'})
-      .then(res => {
-          console.log(res); 
-      })*/
-      //let imageAsB64 = this.getBase64(this.selectedFile);
-      //console.log(imageAsB64);
       imageService.addImage(this.fileAsB64);
   },
 }

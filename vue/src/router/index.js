@@ -10,7 +10,6 @@ import PetSubmission from '../views/PetSubmission.vue'
 import About from '../views/About.vue'
 import UpdatePetsView from '../views/UpdatePetsView.vue'
 import VolunteerApprovalView from '../views/VolunteerApprovalView.vue'
-import ImageSubmission from '../views/ImageSubmission.vue'
 import ContactListView from '../views/ContactListView.vue'
 Vue.use(Router)
 
@@ -97,14 +96,6 @@ const router = new Router({
       component: VolunteerApprovalView,
       meta: {
         requiresAuth: true
-      }
-    },
-    {
-      path: "/submitimage",
-      name: "submitimage",
-      component: ImageSubmission,
-      meta: {
-        requiresAuth: false
       }
     },
     {
