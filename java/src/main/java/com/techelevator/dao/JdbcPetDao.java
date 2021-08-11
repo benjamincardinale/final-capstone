@@ -34,7 +34,8 @@ public class JdbcPetDao implements PetDao{
     public List<Pet> getAllPets() {
         List<Pet> allPets = new ArrayList<>();
         String sql = "SELECT p.pet_id, p.pet_name, p.age_in_months, p.gender, p.species, p.description, " +
-                "p.is_adopted, i.url, i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id;";
+                "p.is_adopted, i.url, i.image_description FROM pets p LEFT JOIN images i ON p.pet_id = i.pet_id " +
+                "ORDER BY p.pet_id ASC;";
         SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql);
         while (result.next()){
             allPets.add(mapRowToPet(result));
