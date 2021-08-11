@@ -58,11 +58,11 @@ export default {
   flex-direction: column;
   position: fixed;
   width: 14vw;
-  margin: 9.5vh 0 5vh -5px;
+  margin: 5.5vh 0 5vh -5px;
 }
 ul li {
   list-style-type: none;
-  height: 8vh;
+  height: 7vh;
 }
 .router-link-exact-active {
   color: white;
