@@ -140,6 +140,7 @@ export default {
   padding: 10px;
 }
 label {
+  margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
 }

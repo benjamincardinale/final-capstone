@@ -89,6 +89,15 @@ ul li {
     font-size: 1.25em;
   }
 }
+@media (min-width: 1100px), (max-width: 1400px){
+  .nav-panel {
+    margin-top: 6%;
+    position: fixed;
+  }
+  .nav-links {
+    font-size: 1.2em;
+  }
+}
 @media (max-width: 700px) {
   .nav-panel {
     display: flex;
