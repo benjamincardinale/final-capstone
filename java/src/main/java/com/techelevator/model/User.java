@@ -15,6 +15,7 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private boolean newUser;
 
    public User() { }
 
@@ -23,6 +24,23 @@ public class User {
       this.username = username;
       this.password = password;
       this.activated = true;
+      this.newUser = true;
+   }
+
+   public User(Long id, String username, String password, boolean activated, boolean newUser) {
+      this.id = id;
+      this.username = username;
+      this.password = password;
+      this.activated = activated;
+      this.newUser = newUser;
+   }
+
+   public boolean isNewUser() {
+      return newUser;
+   }
+
+   public void setNewUser(boolean newUser) {
+      this.newUser = newUser;
    }
 
    public Long getId() {
