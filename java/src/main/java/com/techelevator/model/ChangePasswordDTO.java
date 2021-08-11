@@ -7,12 +7,14 @@ public class ChangePasswordDTO {
     @NotEmpty
     private String newPassword;
 
-    public String getNewPassword() {
-        return newPassword;
+    public ChangePasswordDTO() {}
+
+    public ChangePasswordDTO(String newPassword) {
+        this.newPassword = newPassword;
     }
 
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
+    public String getNewPassword() {
+        return newPassword;
     }
 
 }

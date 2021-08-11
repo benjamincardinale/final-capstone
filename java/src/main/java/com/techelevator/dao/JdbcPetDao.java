@@ -43,7 +43,7 @@ public class JdbcPetDao implements PetDao{
     }
 
     @Override
-    public Pet addPet(Pet pet) { //TODO in sql script, give is_adopted a default value of false
+    public Pet addPet(Pet pet) {
         String sql = "INSERT INTO pets (pet_name, age_in_months, gender, species, description) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING pet_id;";
         long newPetId = jdbcTemplate.queryForObject(sql, Long.class, pet.getName(), pet.getAge(), pet.getGender(),
