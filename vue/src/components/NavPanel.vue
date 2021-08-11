@@ -47,7 +47,7 @@ export default {
   border-radius: 25px;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 31px;
+  font-size: 31pt;
   background: rgb(233, 128, 116);
   padding: 10px;
   margin: 5px;
@@ -89,13 +89,13 @@ ul li {
     font-size: 1.25em;
   }
 }
-@media (min-width: 1100px), (max-width: 1400px){
+@media (max-width: 1300px){
   .nav-panel {
     margin-top: 6%;
     position: fixed;
   }
   .nav-links {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 }
 @media (max-width: 700px) {

@@ -28,8 +28,8 @@ export default {
 
 <style>
 body {
-  /*background-image: url("assets/background_image.jpg");*/
- background: hsla(47, 25%, 89%, 0.75);
+  background-image: url("assets/background.jpg");
+/*background: hsla(47, 25%, 89%, 0.75);*/
   min-height: 100vh;
   display: flex;
   flex-direction: column;
