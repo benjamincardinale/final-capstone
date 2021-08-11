@@ -50,6 +50,7 @@ h2 {
   padding-top: 10px;
   font-size: 4vh;
   margin-bottom: 10px;
+  margin-top: 3%;
   margin-left: 10px;
   white-space: nowrap;
 }
