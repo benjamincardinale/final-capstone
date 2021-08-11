@@ -2,6 +2,8 @@
   <div class="nav-panel">
     <div>
       <ul class="nav-links">
+        <br />
+        <br />
         <li><router-link v-bind:to="{ name: 'home' }"><span class="linktext">Home</span></router-link></li>
         <br />
         <li><router-link v-bind:to="{ name: 'about' }">About</router-link></li>
@@ -25,6 +27,7 @@
         <li>
           <router-link v-bind:to="{ name: 'logout' }">Logout</router-link>
         </li>
+        <br />
         <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
       </ul>
     </div>
