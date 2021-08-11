@@ -6,11 +6,15 @@
       v-bind:key="item.id"
     >
       <h2>{{ item.name }}</h2>
-      <div v-bind:class="{adopted: item.adopted}">
-        <img class="hidden-logo" src= "../assets/Chosen-Black.png" alt="adopted sticker" v-if="item.adopted"/>
-  
-      </div>  
-        <img :src="item.imageUrl" :alt="item.imageDescription" />      
+      <div v-bind:class="{ adopted: item.adopted }">
+        <img
+          class="hidden-logo"
+          src="../assets/Chosen-Black.png"
+          alt="adopted sticker"
+          v-if="item.adopted"
+        />
+      </div>
+      <img :src="item.imageUrl" :alt="item.imageDescription" />
       <div class="info-line">
         <p class="top-line">Gender: {{ item.gender }}</p>
         <p class="top-line">Age: {{ item.age }} Months</p>
@@ -97,7 +101,6 @@ img {
   border: 2px double black;
   border-radius: 20px;
   background-color: hsla(0, 20%, 96%, 0.75);
-
 }
 .hidden-logo {
   max-height: 5.5em;
@@ -113,7 +116,7 @@ img {
   box-shadow: 0 0 100px 10px rgba(255, 203, 154, 0.5);
 }
 .adopted {
-  margin: 0 50vw -15vh 0
+  margin: 0 50vw -15vh 0;
 }
 @media (max-width: 1000px) {
   .cards {
@@ -123,6 +126,14 @@ img {
     align-items: center;
     margin: 2.5% 15% 0% 20%;
     font-size: 0.75em;
+  }
+}
+@media (max-width: 300px) {
+  .cards {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 0.5em;
   }
 }
 </style>

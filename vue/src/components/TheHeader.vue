@@ -47,7 +47,7 @@ export default {
   padding-left: -30px;
 }
 h2 {
-  padding-top: 10px;
+  padding-top: 15px;
   font-size: 4vh;
   margin-bottom: 10px;
   margin-top: 3%;
@@ -108,6 +108,16 @@ h2 {
     font-size: 1em;
   }
 }
+@media (max-width: 839px){
+.header-text h1 {
+  font-size: 2.8em;
+}
+}
+@media (max-width: 802px){
+.header-text h1 {
+  font-size: 2.3em;
+}
+}
 @media (max-width: 700px) {
   .the-header {
     display: flex;
@@ -134,6 +144,18 @@ h2 {
   }
   .current-user {
     font-size: .8em;;
+  }
+}
+@media (max-width: 644px) {
+.header-text h1 {
+    font-size: 2.5em;
+    padding-bottom: 0.5em;
+  }
+}
+@media (max-width: 644px) {
+.header-text h1 {
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
   }
 }
 </style>
