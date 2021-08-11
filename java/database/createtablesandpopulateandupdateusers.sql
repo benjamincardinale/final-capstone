@@ -128,6 +128,12 @@ VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scr
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
 VALUES ('Gonzo', 22, 'M', 'dog', 'Gonzo is a loyal spirit; a young Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
 
+INSERT INTO pets (pet_name, age_in_months, gender, species, description)
+VALUES ('Craig', 36, 'M', 'cat', 'Craig is a sweet boy who loves a good game of fetch. Craig might take a minute to warm up to you but loves a good belly rub!');
+
+INSERT INTO pets (pet_name, age_in_months, gender, species, description)
+VALUES ('Layla', 36, 'F', 'cat', 'Layla is known to many around Second Chances as the sweetest cat on Earth, she loves napping and ear scratches!');
+
 COMMIT;
 
 
@@ -147,6 +153,13 @@ VALUES (4, 'https://i.ibb.co/x5Gvb7L/WAFFLES-01.jpg', 'Young chocolate lab.');
 
 INSERT INTO images (pet_id, url, image_description)
 VALUES (5, 'https://i.ibb.co/BgqrtyL/IMG-0612.jpg', 'Little black mal-shi dog.');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (6, 'https://i.ibb.co/yXGGWQ7/IMG-20210811-123742-01.jpg', 'Bright orange cat who just woke up from a nap');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (7, 'https://i.ibb.co/SrHq4QH/IMG-20210811-123642-01.jpg', 'Lovely sweet tabby cat who just woke up');
+
 
 INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
 VALUES ('henry','johnson','hencutJohnson','hencutJohnson@gmail.com',false,false,0),
