@@ -164,8 +164,8 @@ VALUES (7, 'https://i.ibb.co/SrHq4QH/IMG-20210811-123642-01.jpg', 'Lovely sweet 
 INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
 VALUES ('henry','johnson','hencutJohnson','hencutJohnson@gmail.com',false,false,0),
 ('other','test','othertestguy','othertestguy@gmail.com',true,false,0),
-('ad','min','admin','admin.test.test@gmail.com',true,true,1),
-('us','er','user','user.test.test@gmail.com',true,true,1)
+('Monika','Royal-Fischer','admin','monika@secondchances.org',true,true,1),
+('generic','user','user','genuser@secondchances.org',true,true,1)
 ;
 
 
