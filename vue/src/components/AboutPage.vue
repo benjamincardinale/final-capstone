@@ -2,7 +2,7 @@
   <div class="main">
     <img src="../assets/CatsNDogs.png"
            alt="Picture of Cats and Dogs" />
-    <div class="top-box">
+    <div class="first-box">
       <h2 class="title1"><span>Overview</span></h2>
       <p class="body1">
         <span
@@ -12,11 +12,11 @@
           our society. Being a volunteer-driven organization, we rely on the
           warm hearts of people like you to ensure the benefits of Human-Animal
           Interaction (HAI) continue to grow and permeate throughout our
-          culture. See box on right for how to get involved!</span
+          culture. Continue reading to learn how to get involved!</span
         >
       </p>
     </div>
-    <div class="middle-box">
+    <div class="second-box">
       <h2 class="title2"><span>Interested in Adopting?</span></h2>
       <p class="body2">
         <span
@@ -29,7 +29,7 @@
         >
       </p>
     </div>
-    <div class="bottom-box">
+    <div class="third-box">
       <h2 class="title2"><span>Join Us Today!</span></h2>
       <p class="body2">
         <span
@@ -39,8 +39,20 @@
           the navigation bar on the left of the screen. If you are a current
           user, please select the "Login" option. Finally, if you are an
           authorized user and wish to submit a pet for adoption, please select
-          the button above to get started!</span
+          the "Add Pet" button near the top of the page to get started! (Note this button is hidden for unauthorized users.)</span
         >
+      </p>
+    </div>
+    <div class="fourth-box">
+      <h2 class="title2"><span>The Devs</span></h2>
+      <p class="body2">
+        <span
+          >This web app was engineered by none other than YA BOYS: <br /> <a href="https://www.linkedin.com/in/benjamin-cardinale/">Ben Cardinale</a>
+          <br /><a href="https://www.linkedin.com/in/henry-johnson-401908172/">Henry Johnson</a>
+          <br /><a href="https://www.linkedin.com/in/terrell-mallory/">Terrell Mallory</a>
+          <br /><a href="https://www.linkedin.com/in/nateshrader/">Nate Shrader</a>
+          </span>
+
       </p>
     </div>
   </div>
@@ -61,16 +73,20 @@ export default {
   font-size: 16pt;
 }
 
-.top-box {
+.first-box {
   margin: 2.5% 4% 1% 18%;
 }
 
-.middle-box {
+.second-box {
   margin: 2.5% 4% 1% 18%;
 }
 
-.bottom-box {
-  margin: 2.5% 4% 10% 18%;
+.third-box {
+  margin: 2.5% 4% 1% 18%;
+}
+
+.fourth-box {
+  margin: 2.5% 4% 1% 18%;
 }
 
 p {
