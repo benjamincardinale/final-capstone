@@ -13,7 +13,7 @@
             id="volunteer-registration"
             v-bind:to="{ name: 'apply' }"
             v-if="$store.state.role == ''"
-            >Volunteers Register Here</router-link
+            >Volunteers <br /> Register Here</router-link
           >
           <router-link
             id="contact-list"
