@@ -23,19 +23,36 @@
           required
           autofocus
         />
-        <label for="password" class="sr-only">Password</label>
+        <label for="password" class="sr-only" v-if="!$store.state.user.newUser">Password</label>
         <input
           type="password"
           id="password"
           class="form-control"
           placeholder="Password"
           v-model="user.password"
+          v-if="!$store.state.user.newUser"
           required
         />
-      </div>  
+        
+      </div>
+
+      <div class="change-password" v-if="$store.state.user.newUser">
+          <label for="new-password">Please change your password</label>
+          <input
+            type="password"
+            id="new-password"
+            name="new-password"
+            placeholder="New Password"
+            v-model="passwordChange.newPassword"
+            required
+            />
+            <button v-on:click="changePassword">Change Password</button> 
+        </div>  
       <!--<router-link :to="{ name: 'register' }">Need an account?</router-link>-->
+        
       <button type="submit">Sign in</button>
     </form>
+    
   </div>
 </template>
 
@@ -51,7 +68,10 @@ export default {
         username: "",
         password: ""
       },
-      invalidCredentials: false
+      invalidCredentials: false,
+      passwordChange: {
+        newPassword: '',
+      }
     };
   },
   methods: {
@@ -63,16 +83,30 @@ export default {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$store.commit("SET_ROLE", response.data.user.authorities[0].name)
-            this.$router.push("/");
+            if(!this.$store.state.user.newUser) {
+              this.$router.push('/');
+            }
           }
         })
         .catch(error => {
           const response = error.response;
 
           if (response.status === 401) {
+            if(!this.$store.state.user.newUser)
             this.invalidCredentials = true;
           }
         });
+    },
+    changePassword() {
+      authService.changePassword(this.passwordChange)
+      .then((response => {
+        if(response.status === 200) {
+          alert('Your password has been changed!')
+          this.user.password = this.passwordChange.newPassword
+        }
+      })).catch((error) => {
+        alert('ERROR: '+ error.message)
+      })
     }
   }
 };
@@ -88,18 +122,41 @@ export default {
   border-radius: 12px;
   padding: 5px;
   padding-bottom: 30px; 
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 25%;
+  margin-right: 25%;
   margin-top: 5%;
   background-color: rgba(241, 138, 41, 0.418);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 14pt;
 }
 .txt-boxes {
   display: flex;
   flex-direction: row;
-  max-width: 25%;
-  justify-content: space-between;
+  width: 25vw;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
   text-align: left;
   padding: 10px;
+}
+label {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.change-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  margin-bottom: -2vh;
+  font-size: 14pt;
+
+}
+.change-password button {
+  margin-top: 1vh;
+}
+input {
+  height: 20px;
 }
 
 
@@ -107,8 +164,9 @@ button {
   max-width: 200px;
   margin-top: 5%;
   
-  font-size: 1em;
+  font-size: .85em;
 }
+
 @media (max-width: 1000px) {
   .txt-boxes {
     flex-direction: column;

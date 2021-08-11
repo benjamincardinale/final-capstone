@@ -19,7 +19,7 @@
             id="contact-list"
             v-else
             v-bind:to="{ name: 'contact-list-view' }"
-            >Contact List</router-link
+            >Contact <br /> List</router-link
           >
         </li>
         <br />
