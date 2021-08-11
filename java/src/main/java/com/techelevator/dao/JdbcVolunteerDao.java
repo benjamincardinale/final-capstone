@@ -25,7 +25,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
                 "v.has_any_certifications, v.approval_status_id, a.approval_status_description " +
                 "FROM volunteers v " +
                 "JOIN users u ON v.username = u.username " +
-                "JOIN approval_statuses a ON v.approval_status_id = a.approval_status_id;";
+                "JOIN approval_statuses a ON v.approval_status_id = a.approval_status_id " +
+                "ORDER BY v.volunteer_id ASC;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while (result.next()) {
             approvedVolunteers.add(mapRowToVolunteer(result));
@@ -37,7 +38,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
     public List<Volunteer> getAllPendingAndApprovedVolunteers() { //TODO this will also include volunteers with an approval status of DECLINED
         List<Volunteer> pendingAndApprovedVolunteers = new ArrayList<>();
         String sql = VOLUNTEER_SELECT
-                + " WHERE a.approval_status_description = 'Pending' OR a.approval_status_description = 'Approved';";
+                + " WHERE a.approval_status_description = 'Pending' OR a.approval_status_description = 'Approved' " +
+                "ORDER BY v.volunteer_id ASC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             pendingAndApprovedVolunteers.add(mapRowToVolunteer(results));
@@ -48,7 +50,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
     @Override
     public List<Volunteer> getAllPendingVolunteers() {
         List<Volunteer> pendingVolunteers = new ArrayList<>();
-        String sql = VOLUNTEER_SELECT + " WHERE a.approval_status_description = 'Pending';";
+        String sql = VOLUNTEER_SELECT + " WHERE a.approval_status_description = 'Pending' " +
+                "ORDER BY v.volunteer_id ASC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             pendingVolunteers.add(mapRowToVolunteer(results));
