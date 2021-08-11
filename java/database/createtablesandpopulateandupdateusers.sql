@@ -125,6 +125,9 @@ VALUES ('Buster', 11, 'M', 'rabbit', 'Buster is an inquisitive young fella who n
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
 VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
 
+INSERT INTO pets (pet_name, age_in_months, gender, species, description)
+VALUES ('Gonzo', 22, 'M', 'dog', 'Gonzo is a loyal spirit; a young Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
+
 COMMIT;
 
 
@@ -142,11 +145,14 @@ VALUES (3, 'https://i.ibb.co/47hFxQ0/BUSTER-01.jpg', 'Cute white fluffy bunny.')
 INSERT INTO images (pet_id, url, image_description)
 VALUES (4, 'https://i.ibb.co/x5Gvb7L/WAFFLES-01.jpg', 'Young chocolate lab.');
 
+INSERT INTO images (pet_id, url, image_description)
+VALUES (5, 'https://i.ibb.co/BgqrtyL/IMG-0612.jpg', 'Little black mal-shi dog.');
+
 INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
 VALUES ('henry','johnson','hencutJohnson','hencutJohnson@gmail.com',false,false,0),
 ('other','test','othertestguy','othertestguy@gmail.com',true,false,0),
-('Monika','Royal-Fischer','admin','monika@techelevator.com',true,true,1),
-('generic','user','user','user@secondchances.com',true,true,1)
+('ad','min','admin','admin.test.test@gmail.com',true,true,1),
+('us','er','user','user.test.test@gmail.com',true,true,1)
 ;
 
 
