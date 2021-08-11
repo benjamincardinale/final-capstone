@@ -128,12 +128,20 @@ img {
     font-size: 0.75em;
   }
 }
+@media (max-width: 600px) {
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5em;
+    margin-left: 10em;
+  }
+}
 @media (max-width: 300px) {
   .cards {
     display: flex;
     justify-content: space-between;
-
     font-size: 0.5em;
+    margin-left: 10em;
   }
 }
 </style>

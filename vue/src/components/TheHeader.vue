@@ -152,7 +152,7 @@ h2 {
     padding-bottom: 0.5em;
   }
 }
-@media (max-width: 644px) {
+@media (max-width: 300px) {
 .header-text h1 {
     font-size: 1.5em;
     padding-bottom: 0.5em;
