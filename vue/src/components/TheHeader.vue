@@ -153,14 +153,14 @@ h2 {
 }
 @media (max-width: 644px) {
 .header-text h1 {
-    font-size: 2.5em;
+    font-size: 2.3em;
     padding-bottom: 0.5em;
   }
 }
 @media (max-width: 300px) {
 .header-text h1 {
     font-size: 1.5em;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.8em;
   }
 }
 </style>

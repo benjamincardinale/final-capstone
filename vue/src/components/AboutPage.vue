@@ -125,4 +125,15 @@ img {
     margin-left: 3.5em;
   }
 }
+@media (max-width: 460px){
+  .main{
+    margin-left: 1em;
+  }
+}
+@media (max-width: 350px){
+  .main{
+    margin-left: 1.5em;
+  }
+}
+
 </style>

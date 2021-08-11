@@ -22,7 +22,7 @@
           v-model="user.username"
           required
           autofocus
-        />
+        /> 
         <label for="password" class="sr-only" v-if="!$store.state.user.newUser">Password</label>
         <input
           type="password"
@@ -47,7 +47,7 @@
             required
             />
             <button v-on:click="changePassword">Change Password</button> 
-        </div>  
+        </div> <br><br> 
       <!--<router-link :to="{ name: 'register' }">Need an account?</router-link>-->
         
       <button type="submit">Sign in</button>
@@ -131,7 +131,7 @@ export default {
 }
 .txt-boxes {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 25vw;
   height: 5vh;
   justify-content: center;
@@ -167,10 +167,13 @@ button {
   
   font-size: .85em;
 }
-
+@media (max-width: 1001px){
+  .txt-boxes {
+}
+}
 @media (max-width: 1000px) {
   .txt-boxes {
-    flex-direction: column;
+
     max-width: 50vw;
     padding: 5px;
   }
@@ -182,8 +185,14 @@ button {
 @media (max-width: 700px){
   
   #login {
-    margin-top: 10%;
-    margin-bottom: 40%;
+    margin-left: 4.8em;
+    margin-right: 1.1em;
   }
+  .txt-boxes{
+  margin-left: 2.1em;
 }
+}
+
+
+
 </style>

@@ -178,7 +178,7 @@ export default {
   align-items: center;
   max-width: 60vw;
   background-color: rgba(255, 255, 255, 0.356);
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   padding: 35px;
   border-radius: 45px;
   margin: 2.5vh 20vw 2.5vh 25vw;
@@ -221,18 +221,17 @@ button {
     font-size: 1em;
   }
 }
-@media (max-width: 700px) {
-  .text-boxes {
-    font-size: 1em;
-    margin-left: 0.75em;
 
+@media (max-width: 700px) {
+ .text-boxes {
+    font-size: 1em;
   }
   .title {
     font-size: 1.75em;
     margin-left: 5%;
   }
   .volunteer-form {
-    margin-left: 3.2em;
+    margin: 0 10vw 2.5vh 20vw;
   }
   .radio-btns {
     font-size: 1em;
@@ -240,17 +239,77 @@ button {
   button {
     font-size: 1em;
   }
-  #userName {
-    width: 225px;
+}
+@media (max-width: 410px){
+  .text-boxes {
+    font-size: 1em;
+  }
+  .title {
+    font-size: 1.5em;
+    margin-left: 2em;
+  }
+  .volunteer-form {
+    margin: 0 1vw 2.5vh 4em;
+    margin-right: ;
+  }
+  .radio-btns {
+    font-size: .85em;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    font-size: .85em;
+  }
+    #userName {
+    width: 180px;
   }
   #fname {
-    width: 225px;
+    width: 180px;
   }
   #lname {
-    width: 225px;
+    width: 180px;
   }
   #email {
-    width: 225px;
+    width: 180px;
+  }
+  .buttons{
+    margin-left: 1.4em;
+  }
+}
+@media (max-width: 300px) {
+  .app-card{
+    margin-left: .75em;
+  }
+  .text-boxes {
+    font-size: .75em;
+    margin-left: 1em;
+
+  }
+  .title {
+    font-size: 1.75em;
+    align-items: center;
+  }
+  .volunteer-form {
+    margin-left: 3.2em;
+  }
+  .radio-btns {
+    font-size: .85em;
+  }
+  button {
+    font-size: .85em;
+    margin-left: .4em;
+  }
+  #userName {
+    width: 180px;
+  }
+  #fname {
+    width: 180px;
+  }
+  #lname {
+    width: 180px;
+  }
+  #email {
+    width: 180px;
   }
 }
 </style>
