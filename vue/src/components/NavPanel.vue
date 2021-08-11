@@ -47,7 +47,7 @@ export default {
   border-radius: 25px;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 31pt;
+  font-size: 21pt;
   background: rgb(233, 128, 116);
   padding: 10px;
   margin: 5px;
