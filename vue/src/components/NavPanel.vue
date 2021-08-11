@@ -73,7 +73,11 @@ ul li {
 .nav-panel a:hover {
   text-decoration: underline;
 }
-
+@media (max-width: 1100px) {
+  .nav-links{
+    font-size: 1.3em;
+  }
+}
 @media (max-width: 1000px) {
   .nav-panel {
     display: flex;
