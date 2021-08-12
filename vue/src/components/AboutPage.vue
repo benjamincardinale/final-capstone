@@ -47,7 +47,7 @@
       <h2 class="title2"><span>The Devs</span></h2>
       <p class="body2">
         <span
-          >Thank you for visiting our site! Learn more about our developers here: <br /><br /> <a href="https://www.linkedin.com/in/benjamin-cardinale/">Ben Cardinale</a>
+          >Thank you for visiting our site! <br /> Learn more about the developers here: <br /><br /> <a href="https://www.linkedin.com/in/benjamin-cardinale/">Ben Cardinale</a>
           <br /><a href="https://www.linkedin.com/in/henry-johnson-401908172/">Henry Johnson</a>
           <br /><a href="https://www.linkedin.com/in/terrell-mallory/">Terrell Mallory</a>
           <br /><a href="https://www.linkedin.com/in/nateshrader/">Nate Shrader</a>
