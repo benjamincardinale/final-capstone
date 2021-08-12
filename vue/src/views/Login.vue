@@ -193,10 +193,6 @@ button {
   text-decoration: none;
 }
 
-@media (max-width: 1001px){
-    .txt-boxes {
-  }
-}
 @media (max-width: 1000px) {
   .txt-boxes {
 

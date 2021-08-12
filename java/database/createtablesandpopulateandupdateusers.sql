@@ -114,26 +114,28 @@ COMMIT;
 BEGIN TRANSACTION;
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Cookie', 18, 'F', 'dog', 'Cookie is a shy but friendly pup who loves treats! Spend a little quality time with her and she will warm up to you quickly.');
+VALUES ('Cookie', 18, 'F', 'Dog', 'Cookie is a shy but friendly pup who loves treats! Spend a little quality time with her and she will warm up to you quickly.');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Vincent', 9, 'M', 'cat', 'Say hello to Vincent! This little furball is looking for a new home with a friendly owner. His happy place is a gentle ear scratch and he loves classical music!');
+VALUES ('Vincent', 9, 'M', 'Cat', 'Say hello to Vincent! This little furball is looking for a new home with a friendly owner. His happy place is a gentle ear scratch and he loves classical music!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Buster', 11, 'M', 'rabbit', 'Buster is an inquisitive young fella who needs a loving home with a new friend! Interestingly, he does not seem to like carrots, but is a big cucumber fan!');
+VALUES ('Buster', 11, 'M', 'Rabbit', 'Buster is an inquisitive young fella who needs a loving home with a new friend! Interestingly, he does not seem to like carrots, but is a big cucumber fan!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Waffles', 10, 'M', 'dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
+VALUES ('Waffles', 10, 'M', 'Dog', 'Waffles is an energetic, adorable little scruffy boy with a huge heart who is looking for a friend whom he can love unconditionally!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Gonzo', 130, 'M', 'dog', 'Gonzo is a loyal spirit; a Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
+VALUES ('Gonzo', 130, 'M', 'Dog', 'Gonzo is a loyal spirit; a Mal-shi looking for an owner who will chill with him and give him many belly rubs. He has slightly weak joints, but still loves going on short walks!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Craig', 36, 'M', 'cat', 'Craig is a sweet boy who loves a good game of fetch. Craig might take a minute to warm up to you but loves a good belly rub!');
+VALUES ('Craig', 36, 'M', 'Cat', 'Craig is a sweet boy who loves a good game of fetch. Craig might take a minute to warm up to you but loves a good belly rub!');
 
 INSERT INTO pets (pet_name, age_in_months, gender, species, description)
-VALUES ('Layla', 36, 'F', 'cat', 'Layla is known to many around Second Chances as the sweetest cat on Earth, she loves napping and ear scratches!');
+VALUES ('Layla', 36, 'F', 'Cat', 'Layla is known to many around Second Chances as the sweetest cat on Earth, she loves napping and ear scratches!');
 
+INSERT INTO pets (pet_name, age_in_months, gender, species, description)
+VALUES ('Ms.Cat', 60, 'F','Cat', 'Ms. Cat is a loveable cutie who loves to snuggle! If you are looking for Ms. Cat she is most likely in the nearest sunbeam!');
 COMMIT;
 
 
@@ -159,6 +161,9 @@ VALUES (6, 'https://i.ibb.co/yXGGWQ7/IMG-20210811-123742-01.jpg', 'Bright orange
 
 INSERT INTO images (pet_id, url, image_description)
 VALUES (7, 'https://i.ibb.co/SrHq4QH/IMG-20210811-123642-01.jpg', 'Lovely sweet tabby cat who just woke up');
+
+INSERT INTO images (pet_id, url, image_description)
+VALUES (8, 'https://i.ibb.co/t4zMdTL/IMG-20210812-144932-01-01.jpg', 'Adorable kitty in a sun beam');
 
 
 INSERT INTO volunteers (first_name, last_name, username, email_address, has_adopted_before, has_any_certifications, approval_status_id)
