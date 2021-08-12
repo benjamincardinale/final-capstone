@@ -97,8 +97,34 @@ export default {
 }
 @media (max-width: 1300px) {
     .contact-list {
-        margin-left: 8vw;
+        margin-left: 16vw;
+        width: 70%;
     }
+    .contact-list th {
+    border: 1px solid black;
+    width: 136px;
+    padding: 10px;
+}
+}
+@media (max-width: 1000px) {
+    .contact-list {
+        width: 70%;
+        margin-left: 22%;
+    }
+    .contact-list th {
+    border: 1px solid black;
+    width: 90px;
+    padding: 10px;
+}
+.contact-list td {
+    padding: 10px;
+    border: 1px solid black;
+    width: 200px;
+    text-align: left;
+}
+.contact-list th:last-child {
+    width: 340px;
+}
 }
 
 </style>
