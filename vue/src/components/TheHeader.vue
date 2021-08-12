@@ -10,8 +10,10 @@
         You are <br /> logged in as: <br />
         <span>{{ $store.state.user.username }}</span>
         <br />
-        <router-link class="logout" v-bind:to="{ name: 'logout' }">Log out</router-link>
+        <router-link class="log" v-bind:to="{ name: 'logout' }">Log out</router-link>
       </p>
+      <p v-else>You are <br /> not logged in <br />
+      <router-link class="log" v-bind:to="{ name: 'login' }">Log in</router-link></p>
     </div>
   </div>
 </template>
@@ -79,8 +81,8 @@ h2 {
 .current-user span {
   color: rgb(173, 149, 38);
 }
-.logout {
-  font-size: 1.5vh;
+.log {
+  font-size: 1.7vh;
 }
 
 @media (max-width: 1000px) {

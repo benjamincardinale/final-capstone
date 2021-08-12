@@ -28,7 +28,7 @@
           <router-link v-bind:to="{ name: 'logout' }">Log Out</router-link>
         </li>
         <br />
-        <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
+        <li><router-link v-bind:to="{ name: 'login' }">Log In</router-link></li>
       </ul>
     </div>
     <!-- volunteer link-->
