@@ -74,19 +74,19 @@ export default {
 }
 
 .first-box {
-  margin: 2.5% 4% 1% 18%;
+  margin: 2.5% 4% 1% 16%;
 }
 
 .second-box {
-  margin: 2.5% 4% 1% 18%;
+  margin: 2.5% 4% 1% 16%;
 }
 
 .third-box {
-  margin: 2.5% 4% 1% 18%;
+  margin: 2.5% 4% 1% 16%;
 }
 
 .fourth-box {
-  margin: 2.5% 4% 1% 18%;
+  margin: 2.5% 4% 1% 16%;
 }
 
 p {
@@ -106,7 +106,7 @@ h2 span {
 img {
   height: 30%;
   width: 50%;
-  margin: 5% 4% 1% 18%;
+  margin: 5% 4% 1% 12.5%;
   align-self: center;
   border: 10px double;
   border-radius: 2%;

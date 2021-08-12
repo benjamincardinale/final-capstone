@@ -103,7 +103,7 @@
           <button
             class="btn btn-cancel"
             type="cancel"
-            v-on:click.prevent="cancelForm"
+            v-on:click.prevent="resetAllforms"
           >
             CANCEL
           </button>
@@ -214,6 +214,10 @@ export default {
       this.markAdopted = false;
       this.infoChange = false;
     },
+    resetAllforms() {
+      this.resetIdForm();
+      this.resetAdoptionForm();
+    },
     submitForm() {
       const animalToadd = {
         name: this.targetAnimal.name,
@@ -227,15 +231,13 @@ export default {
         .updateListing(animalToadd, this.targetAnimal.id)
         .then((response) => {
           if (response.status === 200) {
-            this.resetIdForm();
-            this.resetAdoptionForm();
+            this.resetAllforms();
             alert("Submission successful");
             
           }
         })
         .catch((error) => {
-          this.resetIdForm();
-          this.resetAdoptionForm();
+          this.resetAllforms();
           alert("Error: try again: " + error.message);
           
           
@@ -296,14 +298,11 @@ export default {
     },
     stopConfetti() {
       this.$confetti.stop();
-      this.resetAdoptionForm()
-      this.resetIdForm();
+      this.resetAllforms();
       this.confettiActive = false
       this.$router.push('/');
     },
-    routeHome() {
-      this.$router.push('/')
-    }
+   
   },
 };
 </script>

@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     cancelForm() {
-      this.$router.push("/");
       this.newAnimal = {
         name: "",
         gender: "",
@@ -159,6 +158,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 50vh;
+  margin-top: 3%;
 }
 h2 {
     text-align: center;
@@ -171,7 +171,7 @@ h2 {
   justify-content: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 14pt;
+  font-size: 16pt;
   text-align: left;
   width: 500px;
   padding: 40px;

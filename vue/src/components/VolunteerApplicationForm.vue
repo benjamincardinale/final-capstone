@@ -145,7 +145,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   min-height: 50vh;
-  font-size: 16pt;
+  font-size: 12pt;
 }
 
 .title {
@@ -153,23 +153,24 @@ export default {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 2.5em;
-  padding: 40px;
+  padding: 30px;
+  margin-left: 2vw;
 }
 #userName {
-  font-size: 14pt;
-  height: 40px;
+
+  height: 30px;
 }
 #fname {
-  font-size: 16pt;
-  height: 40px;
+  
+  height: 30px;
 }
 #lname {
-  font-size: 14pt;
-  height: 40px;
+  
+  height: 30px;
 }
 #email {
-  font-size: 14pt;
-  height: 40px;
+  
+  height: 30px;
 }
 
 .volunteer-form {
@@ -250,7 +251,6 @@ button {
   }
   .volunteer-form {
     margin: 0 1vw 2.5vh 4em;
-    margin-right: ;
   }
   .radio-btns {
     font-size: .85em;
