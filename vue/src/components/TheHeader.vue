@@ -82,7 +82,7 @@ h2 {
   color: rgb(173, 149, 38);
 }
 .log {
-  font-size: 1.7vh;
+  font-size: 1.6vh;
 }
 
 @media (max-width: 1000px) {
